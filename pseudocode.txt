@@ -18,3 +18,7 @@ Game:
 7. if # of tries is 0 and the user hasn't guessed. Display message of good luck for the next time
 8. Ask to the user if he wants to play a new game
 
+#Features to implement
+1. Show colors, simple color scheme (green for winning, red for losing and yellow as a warning)
+2. No matter if the user gets the word, at the end, a message will be displayed with some info of the country
+3. A personal approach to the user: Ask for his name, and every message must be personal to him
