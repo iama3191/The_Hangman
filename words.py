@@ -1,6 +1,9 @@
 """
 Words to use on the main file, 157 countries,
-only countries with  a single-name
+only countries with a single-name.
+At the beginning of the game a random name will be generated,
+and the user needs to guess the country
+https://www.enchantedlearning.com/wordlist/country.shtml
 """
 country_words = [
     'Afghanistan',
