@@ -1,3 +1,7 @@
+"""
+Words to use on the main file, 157 countries,
+only countries with  a single-name
+"""
 country_words = [
     'Afghanistan',
     'Albania',
@@ -154,5 +158,4 @@ country_words = [
     'Vietnam',
     'Yemen',
     'Zambia',
-    'Zimbabwe'    
-]
+    'Zimbabwe']
