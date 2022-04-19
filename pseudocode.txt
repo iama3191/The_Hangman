@@ -1,0 +1,20 @@
+Before coding:
+1. Choose theme for the hangman (country names)
+2. Create list in the words.py file
+3. Create stages of the hangman (Decide how many stages. The # of stages == # of tries)
+
+Game:
+1. Import words and stages
+2. Generate a random word
+3. Ask to the user for an input (all inputs where be transformed into uppercase)
+4. Check if it is an alphabetic character, a number, or if it's a single character.
+    a. If it is a number, display a message of invalid input and ask for a new one.
+    b. If the input is greater than 1 character, display message of invalid input and ask for a new one.
+    c. If it is an alphabetic character, continue to the next comparison.
+5. Is the letter in the word to guess?
+    a. 'y' --> show the place in the word
+    b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages
+6. Count the # of tries and repeat.
+7. if # of tries is 0 and the user hasn't guessed. Display message of good luck for the next time
+8. Ask to the user if he wants to play a new game
+
