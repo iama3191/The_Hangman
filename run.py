@@ -42,21 +42,26 @@ def play_game():
     is_correct = False
     word_length = '_ ' * len(word)
     print('< ========================================== > \n')
-    print(f'\t{word_length}\n')
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
     while tries > 0  and is_correct is False:
-        
-        print('\n+++++++++++++++++++++++++++++++++++')
+        used_letters = incorrect_letters + correct_letters
+
+        print('\n< ========================================== > \n')
         print(f'Chances: {tries}\n')
-        player_guess = input('Enter any letter to check if it is in the secret word: ').upper()
-        if player_guess.isalpha() is True:
+        print(f'\t{word_length}\n')
+        print(f'Incorrect letters: {incorrect_letters}')
+        print(f'Correct letters: {correct_letters}')
+        print(f'Used letters: {used_letters}\n')
+
+        player_guess = input('Enter a letter or the word: ').upper()
+        if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
                 if player_guess in word:
                     print(f'You did it! {player_guess} is in the word')
+                    correct_letters.append(player_guess)
                 else:
                     incorrect_letters.append(player_guess)
                     tries -= 1
-                print(f'Incorrect letters: {incorrect_letters}')
             elif len(player_guess) == len(word):
                 if player_guess in word:
                     is_correct = True
@@ -65,12 +70,11 @@ def play_game():
                     incorrect_words.append(player_guess)
                     print(f'Sorry... {player_guess} is not the secret word')
                     tries -= 1
-                print(f'Incorrect words: {incorrect_words}')
             else:
                 print(f'Sorry! {player_guess} is not the secret word')
                 tries -= 1
         else:
-            print('Check your entry. Your input is not valid')
+            print('Check your entry. Your input is not valid or you already used it')
         
 
 play_game()
