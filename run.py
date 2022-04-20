@@ -17,17 +17,32 @@ def intro():
     3. You can use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
     name = input('What is your name? ').capitalize()
-    print(f'\nI\'m so glad that you are here {name}! Let\'s play and have fun!!')
-    #start_game()
+    print(f'\nI\'m so glad that you are here {name}! Let\'s play and have fun!!\n')
+    return name
 
 
 def guess_word():
     """
     Get a random word from the imported file words.py and return the word in uppercase
     """
-    word = random.choice(country_words)
-    print(word.upper())
+    return (random.choice(country_words)).upper()
 
 
-intro()
-guess_word()
+def play_game():
+    """
+    Initialize the game, set variables (tries, used letters, )
+    """
+    player = intro()
+    word = guess_word()
+    tries = 8
+    round = 0
+    incorrect_letters = []
+    correct_letters = []
+    is_correct = False
+    word_length = '_ ' * len(word)
+    print('< ========================================== > \n')
+    print(f'\t{word_length}\n')
+    print(player + '! your word has ' + str(len(word)) + ' letters')
+
+
+play_game()
