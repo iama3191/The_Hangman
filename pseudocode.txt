@@ -4,7 +4,7 @@ Before coding:
 (X) Create stages of the hangman (Decide how many stages. The # of stages == # of tries) 
 
 Game:
-( ) Import, words, random library, and stages
+(X) Import, words, random library, and stages
 ( ) Generate a random word
 ( ) Ask to the user for an input (all inputs where be transformed into uppercase)
 ( ) Check if it is an alphabetic character, a number, or if it's a single character.

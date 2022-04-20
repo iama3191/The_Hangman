@@ -10,17 +10,14 @@ def intro():
     starting the game or exit the program
     """
     print('Welcome to the Hangman Game!!')
-    print('Rules are simple: Guess the secret word in 8 tries or less')
+    print('Rules are simple: Guess the secret word in 8 tries or less\n')
     user_name = input('Enter your name: ').capitalize()
     start_game = input(f'{user_name} are you ready to play? (Y / N): ').upper()
-    while start_game != 'Y':
-        if start_game == 'N':
-            print('See you next time. Have a nice day!')
-            break
+    while start_game != 'N':
+        if start_game == 'Y':
+            print('Your word will be')
         else:
-            print('Invalid input')
-            start_game = input('Enter a valid input (Y/ N): ').upper()
+            start_game = input('Invalid input, try (Y or N): ')
             continue
-    print('Game is one')       
-
+        break   
 intro()
