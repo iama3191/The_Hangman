@@ -31,7 +31,8 @@ def guess_word():
 
 def play_game():
     """
-    Initialize the game, set variables (tries, used letters, )
+    Initialize the game, set variables and apply logic 
+    for checking the inputs
     """
     player = intro()
     word = guess_word()
@@ -45,15 +46,14 @@ def play_game():
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
     while tries > 0  and is_correct is False:
         used_letters = incorrect_letters + correct_letters
-
-        print('\n< ========================================== > \n')
+        print('\n< ========================================== >\n')
         print(f'Chances: {tries}\n')
         print(f'\t{word_length}\n')
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
-
-        player_guess = input('Enter a letter or the word: ').upper()
+        print(hangman[len(incorrect_letters)])
+        player_guess = input('Enter a letter or the full word: ').upper()
         if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
                 if player_guess in word:

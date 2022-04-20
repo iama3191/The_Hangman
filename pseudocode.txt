@@ -11,7 +11,7 @@ Game:
     a. If it is a number, display a message of invalid input and ask for a new one. (X)
     b. If the input is greater than 1 character, check if it is the secret word. (X)
     c. If it is an alphabetic character, continue to the next comparison. (X)
-( ) Check if the letter was already used, what will happen? Ask for new input
+(X) Check if the letter was already used, what will happen? Ask for new input
 ( ) Is the letter in the word to guess?
     a. 'y' --> show the place in the word
     b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages
