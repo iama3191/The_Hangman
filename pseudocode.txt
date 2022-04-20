@@ -6,7 +6,7 @@ Before coding:
 Game:
 (X) Import, words, random library, and stages
 (X) Generate a random word
-( ) Ask to the user for an input (all inputs where be transformed into uppercase)
+(X) Ask to the user for an input (all inputs where be transformed into uppercase)
 ( ) Check if it is an alphabetic character, a number, or if it's a single character.
     a. If it is a number, display a message of invalid input and ask for a new one.
     b. If the input is greater than 1 character, display message of invalid input and ask for a new one.
@@ -30,3 +30,5 @@ Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-pytho
 while round < tries:
         player_guess = input('Enter any letter to check if it is in the secret word: ').upper()
         round += 1
+
+        player_guess = input('Enter a letter: ').upper()
