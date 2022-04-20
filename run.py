@@ -18,6 +18,16 @@ def intro():
     < ========================================== > \n''')
     name = input('What is your name? ').capitalize()
     print(f'\nI\'m so glad that you are here {name}! Let\'s play and have fun!!')
-    start_game()
+    #start_game()
+
+
+def guess_word():
+    """
+    Get a random word from the imported file words.py and return the word in uppercase
+    """
+    word = random.choice(country_words)
+    print(word.upper())
+
 
 intro()
+guess_word()
