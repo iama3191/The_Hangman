@@ -23,3 +23,6 @@ Game:
 ( ) Add more ASCII art for the game (Title: Hangman, welcome, final message )
 ( ) No matter if the user gets the word, at the end, a message will be displayed with some info of the country
 ( ) A personal approach to the user: Ask for his name, and every message must be personal to him
+
+#Pages to Check
+Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-python/
