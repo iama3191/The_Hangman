@@ -36,18 +36,18 @@ def play_game():
     player = intro()
     word = guess_word()
     tries = 8
-    round = 0
     incorrect_letters = []
+    incorrect_words = []
     correct_letters = []
     is_correct = False
     word_length = '_ ' * len(word)
     print('< ========================================== > \n')
     print(f'\t{word_length}\n')
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
-    while round < tries  and is_correct is False:
-        round += 1
+    while tries > 0  and is_correct is False:
+        
         print('\n+++++++++++++++++++++++++++++++++++')
-        print(f'Round: {round}\n')
+        print(f'Chances: {tries}\n')
         player_guess = input('Enter any letter to check if it is in the secret word: ').upper()
         if player_guess.isalpha() is True:
             if len(player_guess) == 1:
@@ -55,7 +55,20 @@ def play_game():
                     print(f'You did it! {player_guess} is in the word')
                 else:
                     incorrect_letters.append(player_guess)
+                    tries -= 1
                 print(f'Incorrect letters: {incorrect_letters}')
+            elif len(player_guess) == len(word):
+                if player_guess in word:
+                    is_correct = True
+                    print(f'You are correct! {player_guess} is the secret word')
+                else:
+                    incorrect_words.append(player_guess)
+                    print(f'Sorry... {player_guess} is not the secret word')
+                    tries -= 1
+                print(f'Incorrect words: {incorrect_words}')
+            else:
+                print(f'Sorry! {player_guess} is not the secret word')
+                tries -= 1
         else:
             print('Check your entry. Your input is not valid')
         

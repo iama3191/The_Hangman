@@ -27,8 +27,6 @@ Game:
 #Pages to Check
 Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-python/
 
-while round < tries:
-        player_guess = input('Enter any letter to check if it is in the secret word: ').upper()
-        round += 1
+#W3schools
 
-        player_guess = input('Enter a letter: ').upper()
+https://www.w3schools.com/python/ref_string_isalpha.asp
