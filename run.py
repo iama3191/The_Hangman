@@ -3,7 +3,7 @@ from stages import hangman
 import random
 
 def get_user_input(message):
-    """Show  prompt to the user and get input from the user.
+    """ Show  prompt to the user and get input from the user.
 
     Sanitize the input as follows
     - Remove leading and trailing spaces
@@ -54,11 +54,13 @@ def play_game():
     word = guess_word()
     tries = 7
     incorrect_letters = []
+    # I'm not sure if I will  use this variable or if I can remove it
     incorrect_words = []
     correct_letters = []
     is_correct = False
     word_length = ['_' for i in range(len(word))]
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
+    # loop that'll go until the try #7 and while user doesn't guess the word
     while tries > 0  and is_correct is False:
         used_letters = incorrect_letters + correct_letters
         print('\n< ========================================== >\n')
@@ -68,8 +70,12 @@ def play_game():
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
         player_guess = get_user_input('Enter a letter or the full word: ')
-        if player_guess.isalpha() is True and player_guess not in used_letters:
+        # Condition to check if the character is in the latin alphabet 
+        # and if is not in the used letters
+        if player_guess.isalpha() and player_guess not in used_letters:
+            # Condition to check if the user's input is a single character
             if len(player_guess) == 1:
+                #Condition to check if the user's input is in the word
                 if player_guess in word:
                     position = word.find(player_guess)
                     word_length[position] = player_guess
@@ -93,11 +99,9 @@ def play_game():
         else:
             print(f'{player}, your input is not valid or you already used it')
         print(hangman[len(incorrect_letters)])
-        
         if tries == 0:
             print('Better luck next time! You ran out of chances!')
             print(f'The word is {word}')
-            
-        
+
 
 play_game()

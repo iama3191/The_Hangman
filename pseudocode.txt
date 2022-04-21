@@ -38,4 +38,9 @@ https://www.w3schools.com/python/ref_string_isalpha.asp
     Right now, it only shows once
 + The user experience needs to be improve, work with whitespaces and add colors if it is possible
 + refactorize the code, it is already hard for me to read and understand.
-
++ If the user enters a correct letter, it shows hangman[0] like if the user is wrong
++ add:
+try: 
+valid_input = player_guess.isalpha()
+except:
+    print('invalid input')
