@@ -11,12 +11,13 @@ Game:
     a. If it is a number, display a message of invalid input and ask for a new one. (X)
     b. If the input is greater than 1 character, check if it is the secret word. (X)
     c. If it is an alphabetic character, continue to the next comparison. (X)
-(X) Check if the letter was already used, what will happen? Ask for new input
+(X) Check if the letter was already used, what will happen?
+    a. Ask for a new input
 ( ) Is the letter in the word to guess?
-    a. 'y' --> show the place in the word
-    b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages
-( ) Count the # of tries and repeat.
-( ) if # of tries is 0 and the user hasn't guessed. Display message of good luck for the next time
+    a. 'y' --> show the place in the word, and if it is in one or more places, show them
+    b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages (X)
+(X) Count the # of tries and repeat. 
+(X) if # of tries is 0 and the user hasn't guessed. Display message of good luck for the next time (X)
 ( ) Ask to the user if he wants to play a new game
 
 #Features to implement
@@ -31,3 +32,4 @@ Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-pytho
 #W3schools
 
 https://www.w3schools.com/python/ref_string_isalpha.asp
+

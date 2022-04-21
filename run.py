@@ -81,7 +81,9 @@ def play_game():
             print(f'{player}, your input is not valid or you already used it')
         print(hangman[len(incorrect_letters)])
         
-      
+        if tries == 0:
+            print('Better luck next time! You ran out of chances!')
+            print(f'The word is {word}')
             
         
 
