@@ -44,13 +44,13 @@ def play_game():
     incorrect_words = []
     correct_letters = []
     is_correct = False
-    word_length = '_ ' * len(word)
+    word_length = ['_' for i in range(len(word))]
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
     while tries > 0  and is_correct is False:
         used_letters = incorrect_letters + correct_letters
         print('\n< ========================================== >\n')
-        print(f'Chances: {tries}\n')
         print(f'\t{word_length}\n')
+        print(f'Chances: {tries}\n')
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
@@ -58,6 +58,8 @@ def play_game():
         if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
                 if player_guess in word:
+                    position = word.find(player_guess)
+                    word_length[position] = player_guess
                     print(f'{player}! You did it! {player_guess} is in the word')
                     correct_letters.append(player_guess)
                 else:
@@ -78,11 +80,8 @@ def play_game():
         else:
             print(f'{player}, your input is not valid or you already used it')
         print(hangman[len(incorrect_letters)])
-        solution = ''
-        if solution == word:
-            print(f'{player}! You nailed it!!! You guessed the word')
-        elif tries == 0:
-            print('Better luck next time! You ran out of chances!')
+        
+      
             
         
 

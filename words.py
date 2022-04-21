@@ -10,7 +10,7 @@ country_words = [
     'Albania',
     'Algeria',
     'Andorra',
-    'Angola'
+    'Angola',
     'Argentina',
     'Armenia',
     'Australia',
