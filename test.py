@@ -1,6 +1,6 @@
+import random, re
 from words import country_words
 from stages import hangman
-import random
 
 
 def get_user_input(message):
@@ -77,6 +77,19 @@ def check_in_used_letters(user_input, list_used_letters):
         return False
 
 
+def letter_in_word(user_input, word):
+    """ Check if the letter entered from the user is in the word,
+    and  in what positions are they
+    https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
+    """
+    l = user_input
+    positions = [l.start() for l in re.finditer(l, word)]
+    message = print(f'Good Job! {l} is in the word')
+    #I need to do something more about this.
+    #This needs to display where it is
+    return message
+
+
 def play_game():
     """
     Initialize the game, set variables and apply logic 
@@ -113,7 +126,11 @@ def play_game():
             print('check if it is alpha only and if the letter is alreagy in use')
             if validate_player_guess and not char_used_letters:
                 print('the letter is alpha char')
-                #check if the letter is in the word and what position
+                # check if the letter is in the word and what position
+                # user will not be penalize for this
+                #what to do with the guessed variable?
+                guessed = letter_in_word(player_guess, word)
+                
             else:
                 print('it is not a valid input or it has been used already')
         # I do not need to check if it is an alphabetic word 
@@ -129,5 +146,5 @@ def play_game():
             # offering help
         break
 
-        
+
 play_game()
