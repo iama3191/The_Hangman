@@ -75,7 +75,7 @@ def play_game():
         if player_guess.isalpha() and player_guess not in used_letters:
             # Condition to check if the user's input is a single character
             if len(player_guess) == 1:
-                #Condition to check if the user's input is in the word
+                # Condition to check if the user's input is in the word
                 if player_guess in word:
                     position = word.find(player_guess)
                     word_length[position] = player_guess

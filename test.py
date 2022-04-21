@@ -84,10 +84,7 @@ def letter_in_word(user_input, word):
     """
     l = user_input
     positions = [l.start() for l in re.finditer(l, word)]
-    message = print(f'Good Job! {l} is in the word')
-    #I need to do something more about this.
-    #This needs to display where it is
-    return message
+    return positions
 
 
 def play_game():
@@ -123,15 +120,18 @@ def play_game():
         char_used_letters = check_in_used_letters(player_guess, used_letters)
 
         if len(player_guess) == 1:
-            print('check if it is alpha only and if the letter is alreagy in use')
             if validate_player_guess and not char_used_letters:
-                print('the letter is alpha char')
-                # check if the letter is in the word and what position
-                # user will not be penalize for this
-                #what to do with the guessed variable?
-                guessed = letter_in_word(player_guess, word)
-                
+                # guessed is a list with the indexes 
+                match = letter_in_word(player_guess, word)
+                if len(match) != 0:
+                    print(f'Good job! {player_guess} is in the secret word')
+                    correct_letters.append(player_guess)
+                else:
+                    print(f'Sorry... {player_guess} is not in the secret word')
+                    incorrect_letters.append(player_guess)
+                    tries -= 1
             else:
+                # user will not be penalize for this
                 print('it is not a valid input or it has been used already')
         # I do not need to check if it is an alphabetic word 
         # because it will check that each character is the same 
