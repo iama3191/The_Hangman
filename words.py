@@ -143,7 +143,7 @@ country_words = [
     'Sweden',
     'Switzerland',
     'Syria',
-    'Tajikistan'
+    'Tajikistan',
     'Tanzania',
     'Thailand',
     'Togo',
