@@ -23,8 +23,8 @@ Game:
 #Features to implement
 ( ) Show colors, simple color scheme (green for winning, red for losing and yellow as a warning)
 ( ) Add more ASCII art for the game (Title: Hangman, welcome, final message )
-( ) No matter if the user gets the word, at the end, a message will be displayed with some info of the country
-( ) A personal approach to the user: Ask for his name, and every message must be personal to him
+(N) No matter if the user gets the word, at the end, a message will be displayed with some info of the country
+(Y) A personal approach to the user: Ask for his name, and every message must be personal to him
 
 #Pages to Check
 Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-python/
@@ -32,4 +32,10 @@ Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-pytho
 #W3schools
 
 https://www.w3schools.com/python/ref_string_isalpha.asp
+
+#fix
++ If the word has a letter in more than one place, it need to show in the terminal. 
+    Right now, it only shows once
++ The user experience needs to be improve, work with whitespaces and add colors if it is possible
++ refactorize the code, it is already hard for me to read and understand.
 

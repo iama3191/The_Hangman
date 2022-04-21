@@ -18,7 +18,7 @@ def intro():
     4. Use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
     name = input('What is your name? ').capitalize()
-    print(f'\nI\'m so glad that you are here {name}! Let\'s play and have fun!!\n')
+    print(f'\nI\'m so glad that you are here {name}! Let\'s play!!\n')
     return name
 
 
