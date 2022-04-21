@@ -13,8 +13,9 @@ def intro():
     Welcome to the Hangman Game!\n
     The rules are simple:\n
     1. Guess a random word (HINT: The theme is countries of the world)\n
-    2. Use only 7 tries until the hangman is completed\n
-    3. Use only characters from the latin alphabet (vowels and consonants)\n
+    2. Enter one letter at a time or the full word \n
+    3. Use only 7 tries until the hangman is completed\n
+    4. Use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
     name = input('What is your name? ').capitalize()
     print(f'\nI\'m so glad that you are here {name}! Let\'s play and have fun!!\n')
@@ -32,7 +33,9 @@ def guess_word():
 def play_game():
     """
     Initialize the game, set variables and apply logic 
-    for checking the inputs
+    for checking the inputs, decrease number of tries and print 
+    statements for each round (incorrect letters, correct, letters,
+    used letters)
     """
     player = intro()
     word = guess_word()
@@ -42,7 +45,6 @@ def play_game():
     correct_letters = []
     is_correct = False
     word_length = '_ ' * len(word)
-    print('< ========================================== > \n')
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
     while tries > 0  and is_correct is False:
         used_letters = incorrect_letters + correct_letters
@@ -56,15 +58,16 @@ def play_game():
         if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
                 if player_guess in word:
-                    print(f'You did it! {player_guess} is in the word')
+                    print(f'{player}! You did it! {player_guess} is in the word')
                     correct_letters.append(player_guess)
                 else:
                     incorrect_letters.append(player_guess)
+                    print(f'{player_guess} is not in the secret word')
                     tries -= 1
             elif len(player_guess) == len(word):
                 if player_guess in word:
                     is_correct = True
-                    print(f'You are correct! {player_guess} is the secret word')
+                    print(f'{player}! {player_guess} is the secret word! Congrats!')
                 else:
                     incorrect_words.append(player_guess)
                     print(f'Sorry... {player_guess} is not the secret word')
@@ -73,11 +76,11 @@ def play_game():
                 print(f'Sorry! {player_guess} is not the secret word')
                 tries -= 1
         else:
-            print('Check your entry. Your input is not valid or you already used it')
+            print(f'{player}, your input is not valid or you already used it')
         print(hangman[len(incorrect_letters)])
         solution = ''
         if solution == word:
-            print('You nailed it!!! You guessed the word')
+            print(f'{player}! You nailed it!!! You guessed the word')
         elif tries == 0:
             print('Better luck next time! You ran out of chances!')
             
