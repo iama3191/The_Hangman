@@ -13,7 +13,7 @@ def intro():
     Welcome to the Hangman Game!\n
     The rules are simple:\n
     1. Guess a random word (HINT: The theme is countries of the world)\n
-    2. Use only 8 tries until the hangman is completed\n
+    2. Use only 7 tries until the hangman is completed\n
     3. Use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
     name = input('What is your name? ').capitalize()
@@ -36,7 +36,7 @@ def play_game():
     """
     player = intro()
     word = guess_word()
-    tries = 8
+    tries = 7
     incorrect_letters = []
     incorrect_words = []
     correct_letters = []
@@ -52,7 +52,6 @@ def play_game():
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
-        print(hangman[len(incorrect_letters)])
         player_guess = input('Enter a letter or the full word: ').upper()
         if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
@@ -75,6 +74,13 @@ def play_game():
                 tries -= 1
         else:
             print('Check your entry. Your input is not valid or you already used it')
+        print(hangman[len(incorrect_letters)])
+        solution = ''
+        if solution == word:
+            print('You nailed it!!! You guessed the word')
+        elif tries == 0:
+            print('Better luck next time! You ran out of chances!')
+            
         
 
 play_game()
