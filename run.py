@@ -2,11 +2,24 @@ from words import country_words
 from stages import hangman
 import random
 
+def get_user_input(message):
+    """Show  prompt to the user and get input from the user.
+
+    Sanitize the input as follows
+    - Remove leading and trailing spaces
+    - Convert to uppercase the input for the later comparisons
+
+    Arg: message (str) : The message asking for an input to the user
+
+    Returns: str : The user's sanitized input.
+    """
+
+    user_input = input(message).strip().upper()
+    return user_input
 
 def intro():
-    """
-    Welcome the user to the Hangman Game, ask for the name, explain the 
-    rules and calls for the game function
+    """Welcome the user to the Hangman Game, ask for the name 
+    and show the rules of the game
     """
     print('''
     < ========================================== > \n
@@ -17,7 +30,7 @@ def intro():
     3. Use only 7 tries until the hangman is completed\n
     4. Use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
-    name = input('What is your name? ').capitalize()
+    name = get_user_input('What is your name? ')
     print(f'\nI\'m so glad that you are here {name}! Let\'s play!!\n')
     return name
 
@@ -54,7 +67,7 @@ def play_game():
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
-        player_guess = input('Enter a letter or the full word: ').upper()
+        player_guess = get_user_input('Enter a letter or the full word: ')
         if player_guess.isalpha() is True and player_guess not in used_letters:
             if len(player_guess) == 1:
                 if player_guess in word:
