@@ -32,6 +32,7 @@ Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-pytho
 #W3schools
 
 https://www.w3schools.com/python/ref_string_isalpha.asp
+https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
 
 #fix
 + If the word has a letter in more than one place, it need to show in the terminal. 
@@ -50,3 +51,5 @@ except:
 
 + Create a function to change the display of the incorrect_letters, correct_letters, word_length and used_letters.
 Instead of printing a list, print a string
+
+
