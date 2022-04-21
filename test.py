@@ -111,6 +111,11 @@ def play_game():
 
         if len(player_guess) == 1:
             print('check if it is alpha only and if the letter is alreagy in use')
+            if validate_player_guess and not char_used_letters:
+                print('the letter is alpha char')
+                #check if the letter is in the word and what position
+            else:
+                print('it is not a valid input or it has been used already')
         # I do not need to check if it is an alphabetic word 
         # because it will check that each character is the same 
         # as the hidden word
