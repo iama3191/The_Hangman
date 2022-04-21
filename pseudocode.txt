@@ -44,3 +44,9 @@ try:
 valid_input = player_guess.isalpha()
 except:
     print('invalid input')
+
+
+#Ideas
+
++ Create a function to change the display of the incorrect_letters, correct_letters, word_length and used_letters.
+Instead of printing a list, print a string

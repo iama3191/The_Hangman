@@ -45,6 +45,20 @@ def guess_word():
     return (random.choice(country_words)).upper()
 
 
+def guess_is_alpha(user_input):
+    """Check the user's input (letter or word)
+
+    Arg: user_input (str) : The input from the user to guess
+    the secret word
+
+    Returns: boolean
+    """
+    if user_input.isalpha():
+        return True
+    else:
+        return False
+
+
 def play_game():
     """
     Initialize the game, set variables and apply logic 
@@ -65,13 +79,20 @@ def play_game():
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
 
     # loop that'll go until the try #7 and while user doesn't guess the word
-    while tries > 0  and is_correct is False:
+    while tries > 0 and is_correct is False:
+        used_letters = incorrect_letters + correct_letters
         print('\n< ========================================== >\n')
         print(f'Chances: {tries}\n')
         print(f'\t{word_length}\n')
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
+        player_guess = get_user_input('Enter a letter or the full word: ')
+        validate_player_guess = guess_is_alpha(player_guess)
+        if validate_player_guess:
+            print('next comparison')
+        else:
+            print('wrong input')
 
 
 play_game()
