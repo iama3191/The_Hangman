@@ -59,6 +59,24 @@ def guess_is_alpha(user_input):
         return False
 
 
+def check_in_used_letters(user_input, list_used_letters):
+    """ Check if the input (it needs to be a character) is on the
+    used_letters list
+
+    Arg:
+    - input (str) : the input as a single character to guess the
+    secret word
+    -list_used_letters (list) : list with all the letters that
+    the user is already used
+
+    Returns: boolean
+    """
+    if user_input in list_used_letters:
+        return True
+    else:
+        return False
+
+
 def play_game():
     """
     Initialize the game, set variables and apply logic 
@@ -89,10 +107,22 @@ def play_game():
         print(f'Used letters: {used_letters}\n')
         player_guess = get_user_input('Enter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
-        if validate_player_guess:
-            print('next comparison')
+        char_used_letters = check_in_used_letters(player_guess, used_letters)
+
+        if len(player_guess) == 1:
+            print('check if it is alpha only and if the letter is alreagy in use')
+        # I do not need to check if it is an alphabetic word 
+        # because it will check that each character is the same 
+        # as the hidden word
+        elif len(player_guess) == len(word):
+            print('check if the input is the exactly same word as the hidden one')
+            # if the word is the same, congrats and end the game
+            # if they're not the same, tries = -1
         else:
-            print('wrong input')
+            print('Invalid input, a single character or full word')
+            # user is not penalize for this, it will show a message 
+            # offering help
+        break
 
-
+        
 play_game()
