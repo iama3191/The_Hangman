@@ -117,7 +117,7 @@ def display_messages(tries, word, word_length, incorrect_letters, correct_letter
     """
     print('\n< ========================================== >\n')
     print(f'Chances: {tries}\n')
-    print(f'\n{word}\n')
+    print(f'\n{word_length}{word}\n')
     print(f'Incorrect letters: {list_to_string(incorrect_letters)}\n')
     print(f'Correct letters: {list_to_string(correct_letters)}\n')
     print(f'Used letters: {list_to_string(used_letters)}\n')
@@ -183,8 +183,7 @@ def play_game():
                 if letter in correct_letters:
                     status += letter
                 else:
-                    status += ' _ '
-            print(f'\n{status}\n')
+                    status += '_'
         if status == word:
             print('Congrats! You did it')
             is_correct = True
