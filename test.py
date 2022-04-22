@@ -147,20 +147,17 @@ def play_game():
                     tries -= 1
                     incorrect_letters.append(player_guess)
                     print(f'Sorry... {player_guess} is not in the secret word')
-            # I do not need to check if it is an alphabetic word 
-            # because it will check that each character is the same 
-            # as the hidden word
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
                     print(f'{player}! You\'re a GENIUS! You got the word!')
                 # if the word is the same, congrats, show a message 
-                # for playing the game
+                # for playing again
                 else:
                     tries -= 1
                     incorrect_words.append(player_guess)
                     print(f'Sorry...{player_guess} is not the secret word')   
-                # if they're not the same, tries = -1
+                
             else:
                 print('Invalid input, a single character or full word')
                 # user is not penalize for this, it will show a message 
