@@ -93,6 +93,19 @@ def letter_in_word(user_input, word):
     return positions
 
 
+def list_to_string(list_letter):
+    """ Transforms the items from a lit into a string, when the results
+    are printed, they will show as characters with a space between them
+
+    Arg: list_letter (list) : list that stored elements (letters)
+
+    Returns: str 
+    """
+    convert = ', '
+    list_letter.sort()
+    return convert.join(list_letter)
+
+
 def play_game():
     """Initialize the game and several functions are called to verify variables,
     in that way, the code is not repeated inside this function
@@ -115,10 +128,10 @@ def play_game():
         print('\n< ========================================== >\n')
         print(f'Chances: {tries}\n')
         print(f'\t{word_length} {word}\n')
-        print(f'Incorrect letters: {incorrect_letters}')
-        print(f'Correct letters: {correct_letters}')
-        print(f'Used letters: {used_letters}\n')
-        print(f'Incorrect words: {incorrect_words}')
+        print(f'Incorrect letters: {list_to_string(incorrect_letters)}')
+        print(f'Correct letters: {list_to_string(correct_letters)}')
+        print(f'Used letters: {list_to_string(used_letters)}\n')
+        print(f'Incorrect words: {list_to_string(incorrect_words)}')
         player_guess = get_user_input('Enter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
