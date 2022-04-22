@@ -106,13 +106,26 @@ def list_to_string(list_letter):
     return convert.join(list_letter)
 
 
+def display_messages(tries, word, word_length, incorrect_letters, correct_letters, used_letters, incorrect_words):
+    """ Print all the neccessary messages to the user 
+    """
+    print('\n< ========================================== >\n')
+    print(f'Chances: {tries}\n')
+    print(f'\t{word_length} {word}\n')
+    print(hangman[len(incorrect_letters)])
+    print(f'Incorrect letters: {list_to_string(incorrect_letters)}')
+    print(f'Correct letters: {list_to_string(correct_letters)}')
+    print(f'Used letters: {list_to_string(used_letters)}\n')
+    print(f'Incorrect words: {list_to_string(incorrect_words)}')
+
+
 def play_game():
     """Initialize the game and several functions are called to verify variables,
     in that way, the code is not repeated inside this function
     """
     player = intro()
     word = guess_word()
-    tries = 7
+    tries = 8
     incorrect_letters = []
     correct_letters = []
     # I'm not sure if I will  use this variable or if I can remove it
@@ -125,13 +138,7 @@ def play_game():
     # loop that'll go until the try #7 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
-        print('\n< ========================================== >\n')
-        print(f'Chances: {tries}\n')
-        print(f'\t{word_length} {word}\n')
-        print(f'Incorrect letters: {list_to_string(incorrect_letters)}')
-        print(f'Correct letters: {list_to_string(correct_letters)}')
-        print(f'Used letters: {list_to_string(used_letters)}\n')
-        print(f'Incorrect words: {list_to_string(incorrect_words)}')
+        display_messages(tries, word, word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
         player_guess = get_user_input('Enter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
@@ -166,7 +173,8 @@ def play_game():
             print('Invalid input, an alphabetic character or a new letter')
 
     if is_correct is False:
-        print(f'{player} better luck the next time. The word was {word}')
+        print(f'\n{player} better luck the next time. The word was {word}\n')
+        print(hangman[len(incorrect_letters)])
 
 
 play_game()

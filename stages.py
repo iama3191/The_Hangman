@@ -7,7 +7,7 @@ the hangman is complete
 Inspiration for the hangman art:
 https://coder-question.com/cq-blog/602673
 """
-hangman = ['''
+hangman = [''' ''','''
 __________
   |/
   |
