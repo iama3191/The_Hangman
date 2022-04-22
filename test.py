@@ -14,7 +14,6 @@ def get_user_input(message):
 
     Returns: str : The user's sanitized input.
     """
-
     user_input = input(message).strip().upper()
     return user_input
 
@@ -90,8 +89,8 @@ def letter_in_word(user_input, word):
     This code is from the next link:
     https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
     """
-    l = user_input
-    positions = [l.start() for l in re.finditer(l, word)]
+    letter = user_input
+    positions = [letter.start() for letter in re.finditer(letter, word)]
     return positions
 
 
@@ -118,24 +117,12 @@ def display_messages(tries, word, word_length, incorrect_letters, correct_letter
     """
     print('\n< ========================================== >\n')
     print(f'Chances: {tries}\n')
-    print(f'\t{word_length} {word}\n')
+    print(f'\n{word}\n')
     print(f'Incorrect letters: {list_to_string(incorrect_letters)}\n')
     print(f'Correct letters: {list_to_string(correct_letters)}\n')
     print(f'Used letters: {list_to_string(used_letters)}\n')
     print(f'Incorrect words: {list_to_string(incorrect_words)}\n')
     print(hangman[len(incorrect_letters)])
-
-
-def is_word_guessed(word_length, word):
-    """function that check the status of the word_length and compare 
-    with the hidden word
-    """
-    temp_word_str = ''
-    temp_word_str.join(word_length)
-    if temp_word_str == word:
-        return  True
-    else:
-        return False
 
 
 def play_game():
@@ -159,10 +146,6 @@ def play_game():
         player_guess = get_user_input('\nEnter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
-        status = is_word_guessed(word_length, word)
-        if status is True:
-            is_correct = True
-            print('You won!')
         if validate_player_guess and not char_used_letters:
             if len(player_guess) == 1:
                 # match is a list with the indexes
@@ -194,7 +177,17 @@ def play_game():
         else:
             print('\nInvalid input, an alphabetic character or a new letter\n')  
         # I need to compare word_length with the word
-        
+        status = ''
+        if is_correct is False:
+            for letter in word:
+                if letter in correct_letters:
+                    status += letter
+                else:
+                    status += ' _ '
+            print(f'\n{status}\n')
+        if status == word:
+            print('Congrats! You did it')
+            is_correct = True
 
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
