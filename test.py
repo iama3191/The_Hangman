@@ -80,6 +80,12 @@ def check_in_used_letters(user_input, list_used_letters):
 def letter_in_word(user_input, word):
     """ Check if the letter entered from the user is in the word,
     and  in what positions are they
+    
+    Arg:
+    - user_input (str) : user's input for guessing the word
+    -word (str) : the secret word that the user needs to guess
+
+    Returns: positions (list) : with the indexes where the ocurrences existed
     https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
     """
     l = user_input
@@ -88,20 +94,17 @@ def letter_in_word(user_input, word):
 
 
 def play_game():
-    """
-    Initialize the game, set variables and apply logic 
-    for checking the inputs, decrease number of tries and print 
-    statements for each round (incorrect letters, correct, letters,
-    used letters)
+    """Initialize the game and several functions are called to verify variables,
+    in that way, the code is not repeated inside this function
     """
     player = intro()
     word = guess_word()
     tries = 7
     incorrect_letters = []
-
+    correct_letters = []
     # I'm not sure if I will  use this variable or if I can remove it
     incorrect_words = []
-    correct_letters = []
+    # Variable for knowing if the secret world is guessed
     is_correct = False
     word_length = ['_' for i in range(len(word))]
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
@@ -111,25 +114,26 @@ def play_game():
         used_letters = incorrect_letters + correct_letters
         print('\n< ========================================== >\n')
         print(f'Chances: {tries}\n')
-        print(f'\t{word_length}\n')
+        print(f'\t{word_length} {word}\n')
         print(f'Incorrect letters: {incorrect_letters}')
         print(f'Correct letters: {correct_letters}')
         print(f'Used letters: {used_letters}\n')
+        print(f'Incorrect words: {incorrect_words}')
         player_guess = get_user_input('Enter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
 
         if len(player_guess) == 1:
             if validate_player_guess and not char_used_letters:
-                # guessed is a list with the indexes 
+                # match is a list with the indexes 
                 match = letter_in_word(player_guess, word)
                 if len(match) != 0:
                     print(f'Good job! {player_guess} is in the secret word')
                     correct_letters.append(player_guess)
                 else:
+                    tries -= 1
                     print(f'Sorry... {player_guess} is not in the secret word')
                     incorrect_letters.append(player_guess)
-                    tries -= 1
             else:
                 # user will not be penalize for this
                 print('it is not a valid input or it has been used already')
@@ -138,13 +142,20 @@ def play_game():
         # as the hidden word
         elif len(player_guess) == len(word):
             print('check if the input is the exactly same word as the hidden one')
-            # if the word is the same, congrats and end the game
+            if player_guess == word:
+                is_correct = True
+                print(f'{player}! You\'re a GENIUS! You got the word!')
+            # if the word is the same, congrats, show a message 
+            # for playing the game
+            else:
+                tries -= 1
+                incorrect_words.append(player_guess)
+                print(f'Sorry...{player_guess} is not the secret word')   
             # if they're not the same, tries = -1
         else:
             print('Invalid input, a single character or full word')
             # user is not penalize for this, it will show a message 
             # offering help
-        break
 
 
 play_game()
