@@ -104,6 +104,9 @@ def list_to_string(list_letter):
     same length as the hidden word)
 
     Returns: str
+
+    This code is from the next link:
+    https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
     """
     convert = ', '
     list_letter.sort()
@@ -116,11 +119,23 @@ def display_messages(tries, word, word_length, incorrect_letters, correct_letter
     print('\n< ========================================== >\n')
     print(f'Chances: {tries}\n')
     print(f'\t{word_length} {word}\n')
-    print(hangman[len(incorrect_letters)])
     print(f'Incorrect letters: {list_to_string(incorrect_letters)}\n')
     print(f'Correct letters: {list_to_string(correct_letters)}\n')
     print(f'Used letters: {list_to_string(used_letters)}\n')
     print(f'Incorrect words: {list_to_string(incorrect_words)}\n')
+    print(hangman[len(incorrect_letters)])
+
+
+def is_word_guessed(word_length, word):
+    """function that check the status of the word_length and compare 
+    with the hidden word
+    """
+    temp_word_str = ''
+    temp_word_str.join(word_length)
+    if temp_word_str == word:
+        return  True
+    else:
+        return False
 
 
 def play_game():
@@ -141,42 +156,49 @@ def play_game():
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
         display_messages(tries, word, word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
-        player_guess = get_user_input('Enter a letter or the full word: ')
+        player_guess = get_user_input('\nEnter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
-
+        status = is_word_guessed(word_length, word)
+        if status is True:
+            is_correct = True
+            print('You won!')
         if validate_player_guess and not char_used_letters:
             if len(player_guess) == 1:
-                # match is a list with the indexes 
+                # match is a list with the indexes
                 match = letter_in_word(player_guess, word)
                 if len(match) != 0:
-                    print(f'Good job! {player_guess} is in the secret word')
+                    for element in match:
+                        word_length[element] = player_guess
+                    print(f'\nGood job! {player_guess} is in the secret word\n')
                     correct_letters.append(player_guess)
                 else:
                     tries -= 1
                     incorrect_letters.append(player_guess)
-                    print(f'Sorry... {player_guess} is not in the secret word')
+                    print(f'\nSorry... {player_guess} is not in the secret word\n')
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
-                    print(f'{player}! You\'re a GENIUS! You got the word!')
+                    print(f'\n{player}! You\'re a GENIUS! You got the word!\n')
                 # if the word is the same, congrats, show a message 
                 # for playing again
                 else:
                     tries -= 1
                     incorrect_words.append(player_guess)
-                    print(f'Sorry...{player_guess} is not the secret word')   
+                    print(f'\nSorry...{player_guess} is not the secret word\n')   
                 
             else:
-                print('Invalid input, a single character or full word')
+                print('\nInvalid input, a single character or full word\n')
                 # user is not penalize for this, it will show a message 
                 # offering help
         else:
-            print('Invalid input, an alphabetic character or a new letter')
+            print('\nInvalid input, an alphabetic character or a new letter\n')  
+        # I need to compare word_length with the word
+        
 
     if is_correct is False:
-        print(f'\n{player} better luck the next time. The word was {word}\n')
         print(hangman[len(incorrect_letters)])
+        print(f'\n{player} better luck the next time. The word was {word}\n')
 
 
 play_game()
