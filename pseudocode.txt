@@ -32,6 +32,12 @@ Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-pytho
 #W3schools
 
 https://www.w3schools.com/python/ref_string_isalpha.asp
+
+https://www.educative.io/edpresso/how-to-compare-two-strings-in-python
+
+
+https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
+
 https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
 
 #fix
@@ -53,3 +59,6 @@ except:
 Instead of printing a list, print a string
 
 
+if status is True:
+                    is_correct = True
+                    print('You have done it')
