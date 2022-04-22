@@ -46,7 +46,8 @@ def guess_word():
 
 
 def guess_is_alpha(user_input):
-    """Check the user's input (letter or word)
+    """Check the user's input (letter or word) and verify if the input
+    is an alphabetic string without numbers and symbols:',./...'
 
     Arg: user_input (str) : The input from the user to guess
     the secret word
@@ -60,12 +61,11 @@ def guess_is_alpha(user_input):
 
 
 def check_in_used_letters(user_input, list_used_letters):
-    """ Check if the input (it needs to be a character) is on the
+    """ Check if the input (a character) is on the
     used_letters list
 
     Arg:
-    - input (str) : the input as a single character to guess the
-    secret word
+    - input (str) : the input as a alphabetic character 
     -list_used_letters (list) : list with all the letters that
     the user is already used
 
@@ -86,6 +86,8 @@ def letter_in_word(user_input, word):
     -word (str) : the secret word that the user needs to guess
 
     Returns: positions (list) : with the indexes where the ocurrences existed
+
+    This code is from the next link:
     https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
     """
     l = user_input
@@ -95,11 +97,13 @@ def letter_in_word(user_input, word):
 
 def list_to_string(list_letter):
     """ Transforms the items from a lit into a string, when the results
-    are printed, they will show as characters with a space between them
+    are printed, they will show as characters with a comma and a space between
+    them
 
-    Arg: list_letter (list) : list that stored elements (letters)
+    Arg: list_letter (list) : list that stored elements (letters or words with the 
+    same length as the hidden word)
 
-    Returns: str 
+    Returns: str
     """
     convert = ', '
     list_letter.sort()
@@ -107,16 +111,16 @@ def list_to_string(list_letter):
 
 
 def display_messages(tries, word, word_length, incorrect_letters, correct_letters, used_letters, incorrect_words):
-    """ Print all the neccessary messages to the user 
+    """ Print all the neccessary messages to the user for each round
     """
     print('\n< ========================================== >\n')
     print(f'Chances: {tries}\n')
     print(f'\t{word_length} {word}\n')
     print(hangman[len(incorrect_letters)])
-    print(f'Incorrect letters: {list_to_string(incorrect_letters)}')
-    print(f'Correct letters: {list_to_string(correct_letters)}')
+    print(f'Incorrect letters: {list_to_string(incorrect_letters)}\n')
+    print(f'Correct letters: {list_to_string(correct_letters)}\n')
     print(f'Used letters: {list_to_string(used_letters)}\n')
-    print(f'Incorrect words: {list_to_string(incorrect_words)}')
+    print(f'Incorrect words: {list_to_string(incorrect_words)}\n')
 
 
 def play_game():
@@ -128,9 +132,7 @@ def play_game():
     tries = 8
     incorrect_letters = []
     correct_letters = []
-    # I'm not sure if I will  use this variable or if I can remove it
     incorrect_words = []
-    # Variable for knowing if the secret world is guessed
     is_correct = False
     word_length = ['_' for i in range(len(word))]
     print(player + '! your word has ' + str(len(word)) + ' letters\n')
