@@ -123,8 +123,8 @@ def play_game():
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
 
-        if len(player_guess) == 1:
-            if validate_player_guess and not char_used_letters:
+        if validate_player_guess and not char_used_letters:
+            if len(player_guess) == 1:
                 # match is a list with the indexes 
                 match = letter_in_word(player_guess, word)
                 if len(match) != 0:
@@ -132,30 +132,31 @@ def play_game():
                     correct_letters.append(player_guess)
                 else:
                     tries -= 1
-                    print(f'Sorry... {player_guess} is not in the secret word')
                     incorrect_letters.append(player_guess)
+                    print(f'Sorry... {player_guess} is not in the secret word')
+            # I do not need to check if it is an alphabetic word 
+            # because it will check that each character is the same 
+            # as the hidden word
+            elif len(player_guess) == len(word):
+                if player_guess == word:
+                    is_correct = True
+                    print(f'{player}! You\'re a GENIUS! You got the word!')
+                # if the word is the same, congrats, show a message 
+                # for playing the game
+                else:
+                    tries -= 1
+                    incorrect_words.append(player_guess)
+                    print(f'Sorry...{player_guess} is not the secret word')   
+                # if they're not the same, tries = -1
             else:
-                # user will not be penalize for this
-                print('it is not a valid input or it has been used already')
-        # I do not need to check if it is an alphabetic word 
-        # because it will check that each character is the same 
-        # as the hidden word
-        elif len(player_guess) == len(word):
-            print('check if the input is the exactly same word as the hidden one')
-            if player_guess == word:
-                is_correct = True
-                print(f'{player}! You\'re a GENIUS! You got the word!')
-            # if the word is the same, congrats, show a message 
-            # for playing the game
-            else:
-                tries -= 1
-                incorrect_words.append(player_guess)
-                print(f'Sorry...{player_guess} is not the secret word')   
-            # if they're not the same, tries = -1
+                print('Invalid input, a single character or full word')
+                # user is not penalize for this, it will show a message 
+                # offering help
         else:
-            print('Invalid input, a single character or full word')
-            # user is not penalize for this, it will show a message 
-            # offering help
+            print('Invalid input, an alphabetic character or a new letter')
+
+    if is_correct is False:
+        print(f'{player} better luck the next time. The word was {word}')
 
 
 play_game()
