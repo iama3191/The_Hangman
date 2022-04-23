@@ -122,7 +122,7 @@ def display_messages(tries, dupl_word_length, incorrect_letters, correct_letters
     print(f'Correct letters: {list_to_string(correct_letters)}\n')
     print(f'Used letters: {list_to_string(used_letters)}\n')
     print(f'Incorrect words: {list_to_string(incorrect_words)}\n')
-    print(hangman[len(incorrect_letters)])
+    print(hangman[len(incorrect_letters + incorrect_words)])
 
 
 def play_game():
@@ -148,12 +148,14 @@ def play_game():
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
+            # condition to check user's input based on the length (a char, word 
+            # with the same length as the hidden word and a word with
+            # different length)
             if len(player_guess) == 1:
                 match = letter_in_word(player_guess, word)
                 if len(match) != 0:
                     for element in match:
                         word_length[element] = player_guess
-
                     print(f'\nGood job! {player_guess} is in the secret word\n')
                     correct_letters.append(player_guess)
                 else:
@@ -166,17 +168,17 @@ def play_game():
                     print(f'\n{player}! You\'re a GENIUS! You got the word!\n')
                 # if the word is the same, congrats, show a message 
                 # for playing again
-                else:
+                elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
-                    print(f'\nSorry...{player_guess} is not the secret word\n')   
-                
+                    print(f'\nSorry...{player_guess} is not the secret word\n')    
             else:
                 print('\nInvalid input, a single character or full word\n')
                 # user is not penalize for this, it will show a message 
                 # offering help
         else:
-            print('\nInvalid input, an alphabetic character or a new letter\n')  
+            print('\nInvalid input, an alphabetic character or a new letter\n')
+        
         status = ''
         if is_correct is False:
             for letter in word:
