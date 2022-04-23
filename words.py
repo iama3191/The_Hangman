@@ -60,7 +60,7 @@ country_words = [
     'Ghana',
     'Greece',
     'Grenada',
-    'Guatemanla',
+    'Guatemala',
     'Guinea',
     'Guyana',
     'Haiti',
