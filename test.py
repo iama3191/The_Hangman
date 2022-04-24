@@ -162,7 +162,21 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
     print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m\n')
-    print(hangman[len(incorrect_letters + incorrect_words)])
+    print(f'\033[1;37m {hangman[len(incorrect_letters + incorrect_words)]}\033[0;0m\n')
+
+
+def play_new_game(player):
+    """show message to the user for a new game after the game is over.
+    (No matter if he wins or loses).
+    Arg: player(str): name of the user for displaying personal messages.
+    """
+    play_again = get_user_input(f'{player}, would you like to play a new game? ("Y" / "N")')
+    if play_again == 'Y':
+        play_game(player)
+    elif play_again == 'N':
+        print(f'{player}! Thank you for playing!')
+    else:
+        print('Invalid input')
 
 
 def play_game(name):
@@ -205,18 +219,16 @@ def play_game(name):
                 if player_guess == word:
                     is_correct = True
                     print(f'\n{player}! You\'re a GENIUS! You got the word!\n')
-                # if the word is the same, congrats, show a message 
-                # for playing again
+                    play_new_game(player)
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
                     print(f'\nSorry...{player_guess} is not the secret word \n')    
             else:
                 print('\nInvalid input, a single character or full word\n')
-                # user is not penalize for this, it will show a message 
-                # offering help
+                
         else:
-            print('\n\033[2;30;43m Invalid input, an alphabetic character or a new letter[0;0m\\n')
+            print('\n Invalid input, an alphabetic character or a new letter\n')
         
         status = ''
         if is_correct is False:
@@ -227,11 +239,14 @@ def play_game(name):
                     status += '_'
         if status == word:
             print(f'\nCongrats! You did it! {word} is the hidden country')
+            play_new_game(player)
             is_correct = True
+           
 
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print(f'\n{player} better luck the next time. The word was {word}\n')
+        play_new_game(player)
 
 
 intro()
