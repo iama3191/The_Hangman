@@ -52,11 +52,11 @@ def intro():
     """
     print('''\nWelcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
     name = get_user_input('What is your name? ')
-    print('''\n
-    1. help\n
-    2. play\n
-    3. exit\n''')
     while True:
+        print('''\n
+        1. help\n
+        2. play\n
+        3. exit\n''')
         answer = get_user_input(f'{name}! Please select "1" for reading the rules, "2" for starting the game or "3" for exiting the game: ')
         try:
             answer = int(answer)
