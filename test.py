@@ -18,17 +18,34 @@ def get_user_input(message):
     return user_input
 
 
+def help():
+    """ Show rules to the user 
+    """
+    rules = '''The Hangman is a very simple game, where you need
+    to think logically, to become the winner. The theme of the game is: 
+    'Countries of the World'.\n
+    1. A random word is generated from a list of 157 countries.\n
+    2. You can enter one letter at the time or you can try to complete the whole word.\n
+    3. You have only 8 tries to discover the secret country.\n
+    4. You can only use characters from the latin alphabet (vowels and consonants).\n
+    \n<---------------------------------------------------->\n
+    \n YOU WON'T BE PENALIZED FOR THE FOLLOWING CASES:\n
+    1. Enter a numeric character or a symbol.\n
+    2. Enter a word with a different length than the secret word. \n
+    3. Enter a letter that has already been used.\n''' 
+
+
 def intro():
     """Welcome the user to the Hangman Game, ask for the name 
     and show the rules of the game
     """
     print('''
     < ========================================== > \n
-    Welcome to the Hangman Game!\n
+    Welcome to The Hangman Game!\n
     The rules are simple:\n
     1. Guess a random word (HINT: The theme is countries of the world)\n
     2. Enter one letter at a time or the full word \n
-    3. Use only 7 tries until the hangman is completed\n
+    3. Use only 8 tries until the hangman is completed\n
     4. Use only characters from the latin alphabet (vowels and consonants)\n
     < ========================================== > \n''')
     name = get_user_input('What is your name? ')
