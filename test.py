@@ -18,39 +18,53 @@ def get_user_input(message):
     return user_input
 
 
-def help():
-    """ Show rules to the user 
+def help(name):
+    """ Show rules to the user
+    Arg: name (str) : Name of the user to display in print statements
     """
-    rules = '''The Hangman is a very simple game, where you need
-    to think logically, to become the winner. The theme of the game is: 
-    'Countries of the World'.\n
+    rules = '''\n The Hangman is a very simple game, where you need to think
+logically, to become the winner. The theme of the game is: 'Countries of the
+World'.\n
     1. A random word is generated from a list of 157 countries.\n
-    2. You can enter one letter at the time or you can try to complete the whole word.\n
+    2. You can enter one letter at the time or you can try to complete the
+whole word.\n
     3. You have only 8 tries to discover the secret country.\n
-    4. You can only use characters from the latin alphabet (vowels and consonants).\n
-    \n<---------------------------------------------------->\n
+    4. You can only use characters from the latin alphabet (vowels and
+consonants).\n
+    \n\t<---------------------------------------------------->\n
     \n YOU WON'T BE PENALIZED FOR THE FOLLOWING CASES:\n
     1. Enter a numeric character or a symbol.\n
     2. Enter a word with a different length than the secret word. \n
-    3. Enter a letter that has already been used.\n''' 
-
+    3. Enter a letter that has already been used.\n'''
+    print(f'\n{name}! here are the rules:\n {rules}')
+    decision = get_user_input('\nAre you ready to play? ("Y"/ "N"): ')
+    if decision == 'Y':
+        play_game(name)
+    elif decision == 'N':
+        print(f'\n{name}! see you next time!')
+    else:
+        print('Invalid input')
+    
 
 def intro():
     """Welcome the user to the Hangman Game, ask for the name 
     and show the rules of the game
     """
-    print('''
-    < ========================================== > \n
-    Welcome to The Hangman Game!\n
-    The rules are simple:\n
-    1. Guess a random word (HINT: The theme is countries of the world)\n
-    2. Enter one letter at a time or the full word \n
-    3. Use only 8 tries until the hangman is completed\n
-    4. Use only characters from the latin alphabet (vowels and consonants)\n
-    < ========================================== > \n''')
+    print('''Welcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
     name = get_user_input('What is your name? ')
-    print(f'\nI\'m so glad that you are here {name}! Let\'s play!!\n')
-    return name
+    print('''\n
+    1. help\n
+    2. play\n
+    3. exit\n''')
+    answer = int(get_user_input(f'{name}! Please select "1" for reading the rules, "2" for starting the game or "3" for exiting the game: '))
+    if answer == 1:
+        help(name)
+    elif answer == 2:
+        play_game(name)
+    elif answer == 3:
+        print(f'{name} see you next time!')
+    else:
+        print('Incorrect input')
 
 
 def guess_word():
@@ -142,11 +156,11 @@ def display_messages(tries, dupl_word_length, incorrect_letters, correct_letters
     print(hangman[len(incorrect_letters + incorrect_words)])
 
 
-def play_game():
+def play_game(name):
     """Initialize the game and several functions are called to verify variables,
     in that way, the code is not repeated inside this function
     """
-    player = intro()
+    player = name
     word = guess_word()
     tries = 8
     incorrect_letters = []
@@ -212,4 +226,4 @@ def play_game():
         print(f'\n{player} better luck the next time. The word was {word}\n')
 
 
-play_game()
+intro()
