@@ -52,7 +52,7 @@ def intro():
     """Welcome the user to the Hangman Game, ask for the name 
     and show the rules of the game
     """
-    print('''\nWelcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
+    print('''Welcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
     name = (get_user_input('What is your name? ')).capitalize()
     while True:
         print('''\n
@@ -151,16 +151,17 @@ def list_to_string(list_letter):
     return convert.join(list_letter)
 
 
-def display_messages(tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words):
+def display_messages(player, word, tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words):
     """ Print all the neccessary messages to the user for each round
     """
     print('\n< ========================================== >\n')
-    print(f'Chances: {tries}\n')
-    print(f'\t{dupl_word_length}\n')
-    print(f'Incorrect letters: {list_to_string(incorrect_letters)}\n')
-    print(f'Correct letters: {list_to_string(correct_letters)}\n')
-    print(f'Used letters: {list_to_string(used_letters)}\n')
-    print(f'Incorrect words: {list_to_string(incorrect_words)}\n')
+    print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
+    print(f'\033[0;37m {player}! your word has {str(len(word))} letters\033[0;0m\n')
+    print(f'\n\t{dupl_word_length}\n')
+    print(f'\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
+    print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
+    print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
+    print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m\n')
     print(hangman[len(incorrect_letters + incorrect_words)])
 
 
@@ -176,13 +177,12 @@ def play_game(name):
     incorrect_words = []
     is_correct = False
     word_length = ['_' for i in range(len(word))]
-    print(player + '! your word has ' + str(len(word)) + ' letters\n')
 
     # loop that'll go until the try #7 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
         dupl_word_length = ' '.join(word_length)
-        display_messages(tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
+        display_messages(player, word, tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
         player_guess = get_user_input('\nEnter a letter or the full word: ')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
@@ -200,7 +200,7 @@ def play_game(name):
                 else:
                     tries -= 1
                     incorrect_letters.append(player_guess)
-                    print(f'\nSorry... {player_guess} is not in the secret word\n')
+                    print(f'\nSorry... {player_guess} is not in the secret word \n')
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
@@ -210,13 +210,13 @@ def play_game(name):
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
-                    print(f'\nSorry...{player_guess} is not the secret word\n')    
+                    print(f'\nSorry...{player_guess} is not the secret word \n')    
             else:
                 print('\nInvalid input, a single character or full word\n')
                 # user is not penalize for this, it will show a message 
                 # offering help
         else:
-            print('\nInvalid input, an alphabetic character or a new letter\n')
+            print('\n\033[2;30;43m Invalid input, an alphabetic character or a new letter[0;0m\\n')
         
         status = ''
         if is_correct is False:
