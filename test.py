@@ -22,11 +22,11 @@ def help(name):
     """ Show rules to the user
     Arg: name (str) : Name of the user to display in print statements
     """
-    rules = '''\n The Hangman is a very simple game, where you need to think
-logically, to become the winner. The theme of the game is: 'Countries of the
-World'.\n
+    rules = '''\nThe Hangman is a very simple game, where you need to think
+logically, to become the winner. The theme of the game is:
+'Countries of the World'.\n
     1. A random word is generated from a list of 157 countries.\n
-    2. You can enter one letter at the time or you can try to complete the
+    2. You can enter one letter at the time or you can try to complete the 
 whole word.\n
     3. You have only 8 tries to discover the secret country.\n
     4. You can only use characters from the latin alphabet (vowels and
@@ -50,21 +50,27 @@ def intro():
     """Welcome the user to the Hangman Game, ask for the name 
     and show the rules of the game
     """
-    print('''Welcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
+    print('''\nWelcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
     name = get_user_input('What is your name? ')
     print('''\n
     1. help\n
     2. play\n
     3. exit\n''')
-    answer = int(get_user_input(f'{name}! Please select "1" for reading the rules, "2" for starting the game or "3" for exiting the game: '))
-    if answer == 1:
-        help(name)
-    elif answer == 2:
-        play_game(name)
-    elif answer == 3:
-        print(f'{name} see you next time!')
-    else:
-        print('Incorrect input')
+    while True:
+        answer = get_user_input(f'{name}! Please select "1" for reading the rules, "2" for starting the game or "3" for exiting the game: ')
+        try:
+            answer = int(answer)
+        except:
+            print('Invalid input')
+        if answer == 1:
+            help(name)
+        elif answer == 2:
+            play_game(name)
+        elif answer == 3:
+            print(f'{name} see you next time!')
+            break
+        else:
+            print('Incorrect input')
 
 
 def guess_word():
