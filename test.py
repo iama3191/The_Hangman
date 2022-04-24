@@ -37,13 +37,15 @@ consonants).\n
     2. Enter a word with a different length than the secret word. \n
     3. Enter a letter that has already been used.\n'''
     print(f'\n{name}! here are the rules:\n {rules}')
-    decision = get_user_input('\nAre you ready to play? ("Y"/ "N"): ')
-    if decision == 'Y':
-        play_game(name)
-    elif decision == 'N':
-        print(f'\n{name}! see you next time!')
-    else:
-        print('Invalid input')
+    while True:
+        decision = get_user_input('\nAre you ready to play? ("Y"/ "N"): ')
+        if decision == 'Y':
+            play_game(name)
+        elif decision == 'N':
+            print(f'\n{name}! see you next time!')
+            exit()
+        else:
+            print('\nInvalid input')
     
 
 def intro():
@@ -51,7 +53,7 @@ def intro():
     and show the rules of the game
     """
     print('''\nWelcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
-    name = get_user_input('What is your name? ')
+    name = (get_user_input('What is your name? ')).capitalize()
     while True:
         print('''\n
         1. help\n
@@ -67,10 +69,10 @@ def intro():
         elif answer == 2:
             play_game(name)
         elif answer == 3:
-            print(f'{name} see you next time!')
+            print(f'\n{name} see you next time!')
             break
         else:
-            print('Incorrect input')
+            print('\nIncorrect input\n')
 
 
 def guess_word():
@@ -224,7 +226,7 @@ def play_game(name):
                 else:
                     status += '_'
         if status == word:
-            print('Congrats! You did it')
+            print(f'\nCongrats! You did it! {word} is the hidden country')
             is_correct = True
 
     if is_correct is False:
