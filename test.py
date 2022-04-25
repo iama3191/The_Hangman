@@ -51,12 +51,10 @@ hidden word.\n''')
     name = (get_user_input('What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
     while True:
         print('''\n\033[1;33m Main menu: \033[0;0m \n
-         ___________
-        |           |
-        |  1. help  |
-        |  2. play  |
-        |  3. exit  |
-        |___________|\n''')
+        \033[1;33m(1)\033[0;0m HELP\n
+        \033[1;32m(2)\033[0;0m PLAY\n
+        \033[1;31m(3)\033[0;0m EXIT
+        ''')
         answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
@@ -157,11 +155,11 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
     print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
     print(f'{player}! your word has {str(len(word))} letters\n')
-    print(f'\n\nThe hidden word is {dupl_word_length}\n')
+    print(f'\nThe hidden word is \t{dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
-    print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m\n')
+    print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m')
     print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
@@ -170,7 +168,7 @@ def play_new_game(player):
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'{player}, would you like to play a new game, "Y" or "N"?\033[1;33m ---> \033[0;0m')
+    play_again = get_user_input(f'\n{player}, would you like to play a new game, "Y" or "N"?\033[1;33m ---> \033[0;0m')
     if play_again == 'Y':
         play_game(player)
     elif play_again == 'N':
