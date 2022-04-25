@@ -18,7 +18,7 @@ def get_user_input(message):
     return user_input
 
 
-def help(name):
+def help():
     """ Show rules to the user
     Arg: name (str) : Name of the user to display in print statements
     """
@@ -36,17 +36,8 @@ consonants).\n
     1. Enter a numeric character or a symbol.\n
     2. Enter a word with a different length than the secret word. \n
     3. Enter a letter that has already been used.\n'''
-    print(f'\n{name}! here are the rules:\n {rules}')
-    while True:
-        decision = get_user_input('\nAre you ready to play? ("Y"/ "N"): ')
-        if decision == 'Y':
-            play_game(name)
-        elif decision == 'N':
-            print(f'\n{name}! see you next time!')
-            return
-        else:
-            print('\nInvalid input')
-    
+    return rules
+
 
 def intro():
     """Welcome the user to the Hangman Game, ask for the name 
@@ -65,8 +56,8 @@ def intro():
         except:
             print('\nInvalid input. Please enter "1", "2" or "3"')
         if answer == 1:
-            help(name)
-            break
+            game_rules = help()
+            print(game_rules)
         elif answer == 2:
             play_game(name)
             break
