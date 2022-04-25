@@ -78,11 +78,12 @@ def intro():
 
 
 def guess_word():
+    """Get a random word from the imported file words.py
+
+    Returns: random_word (str): A string in uppercase
     """
-    Get a random word from the imported file words.py and return 
-    the word in uppercase
-    """
-    return (random.choice(country_words)).upper()
+    random_word = (random.choice(country_words)).upper()
+    return random_word
 
 
 def guess_is_alpha(user_input):
@@ -140,8 +141,7 @@ def list_to_string(list_letter):
     are printed, they will show as characters with a comma and a space between
     them alphabetically
 
-    Arg: list_letter (list) : list that stored elements (letters or words with the 
-    same length as the hidden word)
+    Arg: list_letter (list) : list that stored elements (letters or words with the same length as the hidden word)
 
     Returns: str
 
@@ -245,8 +245,6 @@ def play_game(name):
             print(f'\nCongrats! You did it! {word} is the hidden country')
             play_new_game(player)
             is_correct = True
-           
-
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print(f'\n{player} better luck the next time. The word was {word}\n')
