@@ -25,9 +25,8 @@ def rules_help():
     """
     rules = ''' \n<------------------------------------------------------------>
     \n \033[3;33m Rules: \033[0;0m \n
-The Hangman is a very simple game, where you need to think
-logically, to become the winner. The theme of the game is:
-'Countries of the World'.\n
+The Hangman is a very simple game, where you need to think logically,
+to become the winner. The theme of the game is: 'Countries of the World'.\n
     1. A random word is generated from a list of 157 countries.\n
     2. You can enter one letter at the time or you can try to complete the
 whole word.\n
@@ -54,11 +53,11 @@ hidden word.\n''')
         print('''\n\033[1;33m Main menu: \033[0;0m \n
          ___________
         |           |
-        |1. help    |
-        |2. play    |
-        |3. exit    |
+        |  1. help  |
+        |  2. play  |
+        |  3. exit  |
         |___________|\n''')
-        answer = get_user_input(f'\n{name}! Please select "1" for rchecking the rules, "2" for starting the game or "3" for exiting the game: ')
+        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game: ')
         try:
             answer = int(answer)
             if answer == 1:
@@ -155,11 +154,11 @@ def list_to_string(list_letter):
 def display_messages(player, word, tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words):
     """ Print all the neccessary messages to the user for each round
     """
-    print('\n< ========================================== >\n')
+    print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
     print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
-    print(f'\033[0;37m {player}! your word has {str(len(word))} letters\033[0;0m\n')
-    print(f'\n\t{dupl_word_length}\n')
-    print(f'\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
+    print(f'{player}! your word has {str(len(word))} letters\n')
+    print(f'\n\nThe hidden word is: {dupl_word_length}\n')
+    print(f'\n\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
     print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m\n')
@@ -194,7 +193,7 @@ def play_game(name):
     is_correct = False
     word_length = ['_' for i in range(len(word))]
 
-    # loop that'll go until the try #7 and while user doesn't guess the word
+    # loop that'll go until the try #8 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
         dupl_word_length = ' '.join(word_length)
