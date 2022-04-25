@@ -1,4 +1,5 @@
-import random, re
+import random
+import re
 from words import country_words
 from stages import hangman
 
@@ -18,55 +19,63 @@ def get_user_input(message):
     return user_input
 
 
-def help():
+def rules_help():
     """ Show rules to the user
     Arg: name (str) : Name of the user to display in print statements
     """
-    rules = '''\nThe Hangman is a very simple game, where you need to think
+    rules = ''' \n<------------------------------------------------------------>
+    \n \033[3;33m Rules: \033[0;0m \n
+The Hangman is a very simple game, where you need to think
 logically, to become the winner. The theme of the game is:
 'Countries of the World'.\n
     1. A random word is generated from a list of 157 countries.\n
-    2. You can enter one letter at the time or you can try to complete the 
+    2. You can enter one letter at the time or you can try to complete the
 whole word.\n
     3. You have only 8 tries to discover the secret country.\n
     4. You can only use characters from the latin alphabet (vowels and
-consonants).\n
-    \n\t<---------------------------------------------------->\n
-    \n YOU WON'T BE PENALIZED FOR THE FOLLOWING CASES:\n
+consonants).
+    \n\033[3;33m YOU WON'T BE PENALIZED FOR THE FOLLOWING CASES: \033[0;0m \n
     1. Enter a numeric character or a symbol.\n
     2. Enter a word with a different length than the secret word. \n
-    3. Enter a letter that has already been used.\n'''
+    3. Enter a letter that has already been used.
+    \n<------------------------------------------------------------>\n'''
     return rules
 
 
 def intro():
-    """Welcome the user to the Hangman Game, ask for the name 
+    """Welcome the user to the Hangman Game, ask for the name
     and show the rules of the game
     """
-    print('''Welcome to The Hangman Game!! If you want to win, you only need to know about the countries of the world.\n''')
+    print('''\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n
+Welcome to The Hangman Game!! If you want to win, you only need to guess the
+hidden word.\n''')
     name = (get_user_input('What is your name? ')).capitalize()
     while True:
-        print('''\n
-        1. help\n
-        2. play\n
-        3. exit\n''')
-        answer = get_user_input(f'{name}! Please select "1" for reading the rules, "2" for starting the game or "3" for exiting the game: ')
+        print('''\n\033[1;33m Main menu: \033[0;0m \n
+         ___________
+        |           |
+        |1. help    |
+        |2. play    |
+        |3. exit    |
+        |___________|\n''')
+        answer = get_user_input(f'\n{name}! Please select "1" for rchecking the rules, "2" for starting the game or "3" for exiting the game: ')
         try:
             answer = int(answer)
+            if answer == 1:
+                game_rules = rules_help()
+                print(game_rules)
+            elif answer == 2:
+                play_game(name)
+                break
+            elif answer == 3:
+                print(f'\n{name} see you next time!')
+                break
+            else:
+                print('\n --> Invalid input. Please enter "1", "2" or "3"')
+                continue
         except:
-            print('\nInvalid input. Please enter "1", "2" or "3"')
-        if answer == 1:
-            game_rules = help()
-            print(game_rules)
-        elif answer == 2:
-            play_game(name)
-            break
-        elif answer == 3:
-            print(f'\n{name} see you next time!')
-            break
-        else:
-            print('\nInvalid input. Please enter "1", "2" or "3"')
-
+            print('\n --> Invalid input. Please enter "1", "2" or "3"')
+        
 
 def guess_word():
     """Get a random word from the imported file words.py
@@ -97,7 +106,7 @@ def check_in_used_letters(user_input, list_used_letters):
     used_letters list
 
     Arg:
-    - input (str) : the input as a alphabetic character 
+    - input (str) : the input as a alphabetic character
     -list_used_letters (list) : list with all the letters that
     the user is already used
 
@@ -112,7 +121,6 @@ def check_in_used_letters(user_input, list_used_letters):
 def letter_in_word(user_input, word):
     """ Check if the letter entered from the user is in the word,
     and  in what positions are they
-    
     Arg:
     - user_input (str) : user's input for guessing the word
     -word (str) : the secret word that the user needs to guess
@@ -161,17 +169,16 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
 def play_new_game(player):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
-    
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'{player}, would you like to play a new game ("Y" / "N")? ')
+    play_again = get_user_input(f'{player}, would you like to play a new game, "Y" or "N"? ')
     if play_again == 'Y':
         play_game(player)
     elif play_again == 'N':
         print(f'\n{player}! Thank you for playing! See you later!\n')
         return
     else:
-        print('\nInvalid input, please enter "Y" or "N"')
+        print('\n --> Invalid input, please enter, "Y" or "N"')
 
 
 def play_game(name):
@@ -196,7 +203,7 @@ def play_game(name):
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
-            # condition to check user's input based on the length (a char, word 
+            # condition to check user's input based on the length (a char, word
             # with the same length as the hidden word and a word with
             # different length)
             if len(player_guess) == 1:
@@ -218,13 +225,11 @@ def play_game(name):
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
-                    print(f'\nSorry...{player_guess} is not the secret word \n')    
-            else:
-                print('\nInvalid input, enter a single letter or the complete word\n')
-                
+                    print(f'\nSorry...{player_guess} is not the secret word \n')
+                else:
+                    print('\n --> Invalid input, enter a single letter or the complete word\n')
         else:
-            print('\n Invalid input, please enter a new letter.\n')
-        
+            print('\n --> Invalid input, please enter a new letter.\n')
         status = ''
         if is_correct is False:
             for letter in word:
