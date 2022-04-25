@@ -48,7 +48,7 @@ def intro():
     print('''\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n
 Welcome to The Hangman Game!! If you want to win, you only need to guess the
 hidden word.\n''')
-    name = (get_user_input('What is your name? ')).capitalize()
+    name = (get_user_input('What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
     while True:
         print('''\n\033[1;33m Main menu: \033[0;0m \n
          ___________
@@ -57,7 +57,7 @@ hidden word.\n''')
         |  2. play  |
         |  3. exit  |
         |___________|\n''')
-        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game: ')
+        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
             if answer == 1:
@@ -157,7 +157,7 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
     print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
     print(f'{player}! your word has {str(len(word))} letters\n')
-    print(f'\n\nThe hidden word is: {dupl_word_length}\n')
+    print(f'\n\nThe hidden word is {dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
@@ -170,7 +170,7 @@ def play_new_game(player):
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'{player}, would you like to play a new game, "Y" or "N"? ')
+    play_again = get_user_input(f'{player}, would you like to play a new game, "Y" or "N"?\033[1;33m ---> \033[0;0m')
     if play_again == 'Y':
         play_game(player)
     elif play_again == 'N':
@@ -198,7 +198,7 @@ def play_game(name):
         used_letters = incorrect_letters + correct_letters
         dupl_word_length = ' '.join(word_length)
         display_messages(player, word, tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
-        player_guess = get_user_input('\nEnter a letter or the full word: ')
+        player_guess = get_user_input('Enter a letter or the full word \033[1;33m ---> \033[0;0m')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
