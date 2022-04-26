@@ -48,14 +48,14 @@ def intro():
     print('''\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n
 Welcome to The Hangman Game!! If you want to win, you only need to guess the
 hidden word.\n''')
-    name = (get_user_input('What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
+    name = (get_user_input('What is your name? \033[1;33m ---> \033[0;0m \n')).capitalize()
     while True:
         print('''\n\033[1;33m Main menu: \033[0;0m \n
         \033[1;33m(1)\033[0;0m HELP\n
         \033[1;32m(2)\033[0;0m PLAY\n
-        \033[1;31m(3)\033[0;0m EXIT
+        \033[1;31m(3)\033[0;0m EXIT\n
         ''')
-        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m')
+        answer = get_user_input(f'{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m \n')
         try:
             answer = int(answer)
             if answer == 1:
