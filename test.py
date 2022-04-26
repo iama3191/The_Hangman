@@ -50,12 +50,12 @@ def intro():
  hidden word.\n''')
     name = (get_user_input(' What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
     while True:
-        print('''\n\033[1;33m Main menu: \033[0;0m \n
+        print('''\n \033[3;33m***** Main menu *****\033[0;0m \n
         \033[1;33m(1)\033[0;0m HELP\n
         \033[1;32m(2)\033[0;0m PLAY\n
         \033[1;31m(3)\033[0;0m EXIT
         ''')
-        answer = get_user_input(f' {name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m')
+        answer = get_user_input(f' {name}! Please select "1" for checking the rules, "2" for starting the game or "3" for  exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
             if answer == 1:
@@ -65,7 +65,8 @@ def intro():
                 play_game(name)
                 break
             elif answer == 3:
-                print(f'\n{name} see you next time!')
+                print(f'\n {name} see you next time!\n')
+                print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
                 break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter "1", "2" or "3"')
@@ -120,8 +121,7 @@ def letter_in_word(user_input, word):
     and  in what positions are they
     Arg:
     - user_input (str) : user's input for guessing the word
-    -word (str) : the secret word that the user needs to guess
-
+    - word (str) : the secret word that the user needs to guess
     Returns: positions (list) : with the indexes where the ocurrences existed
 
     This code is from the next link:
@@ -153,7 +153,7 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     """ Print all the neccessary messages to the user for each round
     """
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
-    print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
+    print(f' \033[4;33mChances {tries}\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
     print(f'\n The hidden word is \t{dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
@@ -236,11 +236,13 @@ def play_game(name):
                 else:
                     status += '_'
         if status == word:
-            print(f'\n Congrats! You did it! {word} is the hidden country')
+            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
+            print(f'\n Congrats! You did it! {word} is the hidden word')
             play_new_game(player)
             is_correct = True
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
+        print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
         print(f'\n {player} better luck the next time. The word was {word}\n')
         play_new_game(player)
 
