@@ -41,6 +41,18 @@ def rules_help():
     return rules
 
 
+def validation_user_name(mssg):
+    """Validate the user's name so the user can enter any type of character except
+    and empty input or only a white space.
+    Arg: mssg (str): Message asking a name to the user
+    Returns: str 
+    """
+    user_name = input(mssg).strip()
+    while user_name == '':
+        print('\n Invalid input... You need to enter at least one character\n')
+        user_name = input(mssg).strip()
+    return user_name.capitalize()
+
 def intro():
     """Welcome the user to the Hangman Game, ask for the name
     and show the rules of the game
@@ -48,7 +60,7 @@ def intro():
     print('''\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n
  Welcome to The Hangman Game!! If you want to win, you only need to guess the
  hidden word.\n''')
-    name = (get_user_input(' What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
+    name = validation_user_name(' What is your name? (You can use numbers and letters)\033[1;33m ---> \033[0;0m')
     while True:
         print('''\n \033[3;33m***** Main menu *****\033[0;0m \n
         \033[1;33m(1)\033[0;0m HELP\n
@@ -160,7 +172,7 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
     print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m')
-    print(f'\t{hangman[len(incorrect_letters + incorrect_words)]}\n')
+    print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
 def play_new_game(player):
