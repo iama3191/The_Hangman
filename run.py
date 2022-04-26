@@ -48,16 +48,14 @@ def intro():
     print('''\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n
 Welcome to The Hangman Game!! If you want to win, you only need to guess the
 hidden word.\n''')
-    name = (get_user_input('What is your name? ')).capitalize()
+    name = (get_user_input('What is your name? \033[1;33m ---> \033[0;0m')).capitalize()
     while True:
         print('''\n\033[1;33m Main menu: \033[0;0m \n
-         ___________
-        |           |
-        |  1. help  |
-        |  2. play  |
-        |  3. exit  |
-        |___________|\n''')
-        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game: ')
+        \033[1;33m(1)\033[0;0m HELP\n
+        \033[1;32m(2)\033[0;0m PLAY\n
+        \033[1;31m(3)\033[0;0m EXIT
+        ''')
+        answer = get_user_input(f'\n{name}! Please select "1" for checking the rules, "2" for starting the game or "3" for exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
             if answer == 1:
@@ -70,10 +68,10 @@ hidden word.\n''')
                 print(f'\n{name} see you next time!')
                 break
             else:
-                print('\n --> Invalid input. Please enter "1", "2" or "3"')
+                print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter "1", "2" or "3"')
                 continue
         except:
-            print('\n --> Invalid input. Please enter "1", "2" or "3"')
+            print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter "1", "2" or "3"')
         
 
 def guess_word():
@@ -157,11 +155,11 @@ def display_messages(player, word, tries, dupl_word_length, incorrect_letters, c
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
     print(f'\033[1;33m Chances: {tries}\033[0;0m\n')
     print(f'{player}! your word has {str(len(word))} letters\n')
-    print(f'\n\nThe hidden word is: {dupl_word_length}\n')
+    print(f'\nThe hidden word is \t{dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: {list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: {list_to_string(correct_letters)}\033[0;0m\n')
     print(f'\033[1;37m Used letters: {list_to_string(used_letters)}\033[0;0m\n')
-    print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m\n')
+    print(f'\033[1;31m Incorrect words: {list_to_string(incorrect_words)}\033[0;0m')
     print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
@@ -170,14 +168,15 @@ def play_new_game(player):
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'{player}, would you like to play a new game, "Y" or "N"? ')
+    play_again = get_user_input(f'\n{player}, would you like to play a new game, "Y" or "N"?\033[1;33m ---> \033[0;0m')
     if play_again == 'Y':
         play_game(player)
     elif play_again == 'N':
         print(f'\n{player}! Thank you for playing! See you later!\n')
+        print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__\n')
         return
     else:
-        print('\n --> Invalid input, please enter, "Y" or "N"')
+        print('\n\033[1;31m -->\033[0;0m Invalid input, please enter, "Y" or "N"')
 
 
 def play_game(name):
@@ -198,7 +197,7 @@ def play_game(name):
         used_letters = incorrect_letters + correct_letters
         dupl_word_length = ' '.join(word_length)
         display_messages(player, word, tries, dupl_word_length, incorrect_letters, correct_letters, used_letters, incorrect_words)
-        player_guess = get_user_input('\nEnter a letter or the full word: ')
+        player_guess = get_user_input('Enter a letter or the full word \033[1;33m ---> \033[0;0m')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
@@ -226,9 +225,9 @@ def play_game(name):
                     incorrect_words.append(player_guess)
                     print(f'\nSorry...{player_guess} is not the secret word \n')
                 else:
-                    print('\n --> Invalid input, enter a single letter or the complete word\n')
+                    print('\n\033[1;31m -->\033[0;0m Invalid input, enter a single letter or the complete word\n')
         else:
-            print('\n --> Invalid input, please enter a new letter.\n')
+            print('\n\033[1;31m -->\033[0;0m Invalid input, please enter a new letter.\n')
         status = ''
         if is_correct is False:
             for letter in word:
