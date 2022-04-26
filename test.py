@@ -45,7 +45,7 @@ def validation_user_name(mssg):
     """Validate the user's name so the user can enter any type of character except
     and empty input or only a white space.
     Arg: mssg (str): Message asking a name to the user
-    Returns: str 
+    Returns: user_name(str): user's input is capitalized 
     """
     user_name = input(mssg).strip()
     while user_name == '':
