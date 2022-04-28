@@ -42,14 +42,13 @@ def rules_help():
 
 
 def validation_user_name(mssg):
-    """Validate the user's name so the user can enter any type of character except
-    and empty input or only a white space.
+    """Validate the user's name so the user can enter an alphanumeric name.
     Arg: mssg (str): Message asking a name to the user
     Returns: user_name(str): user's input is capitalized
     """
     user_name = input(mssg).strip()
-    while user_name == '':
-        print('\n Invalid input... You need to enter at least one character\n')
+    while not user_name.isalnum():
+        print('\n Invalid input... You can only use numbers and characters.\n')
         user_name = input(mssg).strip()
     return user_name.capitalize()
 
