@@ -9,6 +9,7 @@
 ## About
 The Hangman is a guessing game for two or more players. One player chooses a word, a phrase or a sentence, and the rest of the players try to guess by indicating letters or if they are feeling confident, indicating the full word, phrase or sentence.  
 The word to guess is represented by a row of dashes representing each letter of the word. If the suggested letter is in the word, it is written down in all its correct positions. If it isn't in the word, the player, who chose the word, draws a stage of the hangman. This process is repeated until the hangman's diagram is completed. The number of tries  can change depending on how detailed is the diagram.
+This game is adapted for playing against the computer. All the words belong to the theme: 'Countries of the world', the player has 8 tries until the hangman is completed
 
 
 ## Index - Table of Contents
