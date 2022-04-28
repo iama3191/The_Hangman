@@ -43,12 +43,14 @@ def rules_help():
 
 def validation_user_name(mssg):
     """Validate the user's name so the user can enter an alphanumeric name.
+    And the input needs to be longer than one character
     Arg: mssg (str): Message asking a name to the user
     Returns: user_name(str): user's input is capitalized
     """
     user_name = input(mssg).strip()
-    while not user_name.isalnum():
-        print('\n Invalid input... You can only use numbers and characters.\n')
+    while not user_name.isalnum() or len(user_name) == 1:
+        print('\n Invalid input... Please use alphanumeric characters, and'
+              ' the name needs to have more than "1" character.\n')
         user_name = input(mssg).strip()
     return user_name.capitalize()
 
