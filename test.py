@@ -106,7 +106,7 @@ def guess_word():
 
 def guess_is_alpha(user_input):
     """Check the user's input (letter or word) and verify if the input
-    is an alphabetic string without numbers and symbols:',./...'
+    is an alphabetic string without numbers and symbols:',./$#'
 
     Arg: user_input (str) : The input from the user to guess
     the secret word
@@ -124,8 +124,8 @@ def check_in_used_letters(user_input, list_used_letters):
     used_letters list
 
     Arg:
-    - input (str) : the input as a alphabetic character
-    -list_used_letters (list) : list with all the letters that
+    - user_input (str) : the input as a alphabetic character
+    - list_used_letters (list) : list with all the letters that
     the user is already used
 
     Returns: boolean
@@ -156,8 +156,8 @@ def letter_in_word(user_input, word):
 
 def list_to_string(list_letter):
     """ Transforms the items from a lit into a string, when the results
-    are printed, they will show as characters with a comma and a space between
-    them alphabetically
+    are printed, they will be shown as characters with a comma and a space
+    between them alphabetically
 
     Arg: list_letter (list) : list that stored elements (letters or words with
     the same length as the hidden word)
@@ -183,6 +183,20 @@ def display_messages(
     incorrect_words
 ):
     """ Print all the neccessary messages to the user for each round
+    Arg:
+    - player (str): Chosen name by the user.
+    - word (str): Random country from the list country_words.
+    - tries (num): The maximun number of tries before the hangman is completed.
+    - dupl_word_length (str): Chosen word that will be displayed with a space
+    between each letter.
+    - incorrect_letters (lst): list with all the entered letters that aren't
+    in the hidden word.
+    - correct_letters (lst): list with all the entered letters that are in
+    the words.
+    - used_letters (lst): list with all the entered letters by the user
+    (correct and incorrect letters)
+    - incorrect_words (lst): list with all the words with the same length
+    as the hidden word that aren't correct
     """
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
           '\\__/\\__/\\__\n')
@@ -220,7 +234,8 @@ def play_new_game(player):
 
 def play_game(name):
     """Initialize the game and several functions are called to verify variables,
-    in that way, the code is not repeated inside this function
+    in that way, the code is not repeated inside this function.
+    Arg: name (str): Name chosen by the user.
     """
     player = name
     word = guess_word()
@@ -250,7 +265,7 @@ def play_game(name):
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
             # condition to check user's input based on the length (a char, word
-            # with the same length as the hidden word and a word with
+            # with the same length as the hidden word or a word with
             # different length)
             if len(player_guess) == 1:
                 match = letter_in_word(player_guess, word)
