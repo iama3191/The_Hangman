@@ -51,6 +51,7 @@ def validation_user_name(mssg):
     while not user_name.isalnum() or len(user_name) == 1:
         print('\n Invalid input... Please use alphanumeric characters, and'
               ' the name needs to have more than "1" character.\n')
+        user_name = input(mssg).strip()
     return user_name.capitalize()
 
 
