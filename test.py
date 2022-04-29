@@ -51,7 +51,6 @@ def validation_user_name(mssg):
     while not user_name.isalnum() or len(user_name) == 1:
         print('\n Invalid input... Please use alphanumeric characters, and'
               ' the name needs to have more than "1" character.\n')
-        user_name = input(mssg).strip()
     return user_name.capitalize()
 
 
@@ -208,7 +207,7 @@ def display_messages(
           f'{list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: '
           f'{list_to_string(correct_letters)}\033[0;0m\n')
-    print(f'\033[1;37m Used letters:'
+    print(f'\033[1;37m Used letters: '
           f'{list_to_string(used_letters)}\033[0;0m\n')
     print(f'\033[1;31m Incorrect words: '
           f'{list_to_string(incorrect_words)}\033[0;0m')
@@ -305,8 +304,8 @@ def play_game(name):
                       f' Good luck!\n')
                 play_game(player)
             elif player_guess == '3':
-                print('\nYou are exiting the game! See you next time\n')
-                intro()
+                print('\nYou want to exit the game?\n')
+                break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')

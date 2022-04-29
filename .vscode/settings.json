@@ -23,5 +23,8 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
    "editor.defaultFormatter": "HookyQR.beautify",
-   "todo-tree.tree.showBadges": false
+   "todo-tree.tree.showBadges": false,
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   }
 }
