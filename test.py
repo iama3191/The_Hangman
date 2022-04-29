@@ -200,6 +200,8 @@ def display_messages(
     """
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
           '\\__/\\__/\\__\n')
+    print('\033[1;31;47m Choose "1" for checking the rules, "2" for '
+          'restarting, and "3" for exiting the game...\033[0;0m \n')
     print(f' \033[4;33mChances {tries}\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
     print(f'\n The hidden word is \t{dupl_word_length}\n')
@@ -219,17 +221,20 @@ def play_new_game(player):
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'\n {player}, would you like to play a new '
-                                f'game, "Y" or "N"?\033[1;33m ---> \033[0;0m')
-    if play_again == 'Y':
-        play_game(player)
-    elif play_again == 'N':
-        print(f'\n {player}! Thank you for playing! See you later!\n')
-        print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
-              '/\\__/\\__/\\__\n')
-        return
-    else:
-        print('\n\033[1;31m -->\033[0;0m Invalid input... enter: "Y" or "N"')
+    while True:
+        play_again = get_user_input(f'\n {player}, would you like to play a '
+                                    f'new game, "Y" or "N"?\033[1;33m ---> '
+                                    f'\033[0;0m')
+        if play_again == 'Y':
+            print('\n A new game is starting....\n')
+            play_game(player)
+        elif play_again == 'N':
+            print(f'\n {player}! Thank you for playing! See you later!\n')
+            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
+                  '\\__/\\__/\\__/\\__\n')
+            break
+        else:
+            print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
 
 def play_game(name):
@@ -300,11 +305,10 @@ def play_game(name):
                 print(rules)
                 print('\n Game is continuing...\n')
             elif player_guess == '2':
-                print(f'\n{player}, a new game is about to start...'
+                print(f'\n {player}, a new game is about to start...'
                       f' Good luck!\n')
                 play_game(player)
             elif player_guess == '3':
-                print('\nYou want to exit the game?\n')
                 break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
@@ -320,8 +324,8 @@ def play_game(name):
             print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
                   '/\\__/\\__/\\__/\\__\n')
             print(f'\n Congrats! You did it! {word} is the hidden word')
-            play_new_game(player)
             is_correct = True
+            play_new_game(player)
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
