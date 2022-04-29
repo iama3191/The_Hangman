@@ -222,20 +222,18 @@ def play_new_game(player):
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    while True:
-        play_again = get_user_input(f'\n {player}, would you like to play a '
-                                    f'new game, "Y" or "N"?\033[1;33m ---> '
-                                    f'\033[0;0m')
-        if play_again == 'Y':
-            print('\n A new game is starting....\n')
-            play_game(player)
-        elif play_again == 'N':
-            print(f'\n {player}! Thank you for playing! See you later!\n')
-            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
-                  '\\__/\\__/\\__/\\__\n')
-            break
-        else:
-            print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
+    play_again = get_user_input(f'\n {player}, would you like to play a '
+                                f'new game, "Y" or "N"?\033[1;33m ---> '
+                                f'\033[0;0m')
+    while play_again != 'Y' or play_again != 'N':
+        print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
+    if play_again == 'Y':
+        print('\n A new game is starting....\n')
+        play_game(player)
+    else:
+        print(f'\n {player}! Thank you for playing! See you later!\n')
+        print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
+              '\\__/\\__/\\__/\\__\n')
 
 
 def play_game(name):

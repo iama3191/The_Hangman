@@ -92,8 +92,8 @@ def intro():
                       ' "1", "2" or "3"')
                 continue
         except:
-            print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter "1",'
-                  ' "2" or "3"')
+            print('\n\033[1;31m -->\033[0;0m Invalid input...Please '
+                  'enter "1", "2" or "3"')
 
 
 def guess_word():
@@ -201,7 +201,7 @@ def display_messages(
     """
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
           '\\__/\\__/\\__\n')
-    print('\033[1;31;47m Choose "1" for checking the rules, "2" for '
+    print('\033[1;31m Choose "1" for checking the rules, "2" for '
           'restarting, and "3" for exiting the game...\033[0;0m \n')
     print(f' \033[4;33mChances {tries}\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
@@ -331,7 +331,7 @@ def play_game(name):
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
-        print(f'\n {player} better luck the next time. The word was {word}\n')
+        print(f'\n {player}! better luck the next time. The word was {word}\n')
         play_new_game(player)
 
 
