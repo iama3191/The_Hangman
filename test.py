@@ -295,8 +295,21 @@ def play_game(name):
                     print('\n\033[1;31m -->\033[0;0m Invalid input, enter'
                           ' a single letter or the complete word\n')
         else:
-            print('\n\033[1;31m -->\033[0;0m Invalid input, please enter a'
-                  ' new letter.\n')
+            if player_guess == '1':
+                print(f'\n {player}... Check the rules... \n')
+                rules = rules_help()
+                print(rules)
+                print('\n Game is continuing...\n')
+            elif player_guess == '2':
+                print(f'\n{player}, a new game is about to start...'
+                      f' Good luck!\n')
+                play_game(player)
+            elif player_guess == '3':
+                print('\nYou are exiting the game! See you next time\n')
+                intro()
+            else:
+                print('\n\033[1;31m -->\033[0;0m Invalid input, please '
+                      'enter a new letter.\n')
         status = ''
         if is_correct is False:
             for letter in word:
