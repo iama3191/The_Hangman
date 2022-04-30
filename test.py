@@ -229,6 +229,7 @@ def play_new_game(player):
         if play_again == 'Y':
             print('\n A new game is starting....\n')
             play_game(player)
+            break
         elif play_again == 'N':
             print(f'\n {player}! Thank you for playing! See you later!\n')
             print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
@@ -309,6 +310,8 @@ def play_game(name):
                 print(f'\n {player}, a new game is about to start...'
                       f' Good luck!\n')
                 play_game(player)
+                print('before the break')
+                break
             elif player_guess == '3':
                 break
             else:
