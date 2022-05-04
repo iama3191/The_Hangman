@@ -76,11 +76,14 @@ def intro():
                                 ' exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
+        except ValueError:
+            print(f'\n\033[1;31m -->\033[0;0m Invalid input: {answer}')
+        else:
             if answer == 1:
                 game_rules = rules_help()
                 print(game_rules)
             elif answer == 2:
-                play_game(name)
+                start_game(name)
                 break
             elif answer == 3:
                 print(f'\n {name} see you next time!\n')
@@ -91,9 +94,6 @@ def intro():
                 print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter'
                       ' "1", "2" or "3"')
                 continue
-        except:
-            print('\n\033[1;31m -->\033[0;0m Invalid input...Please '
-                  'enter "1", "2" or "3"')
 
 
 def guess_word():
@@ -117,6 +117,8 @@ def guess_is_alpha(user_input):
     if user_input.isalpha():
         return True
     else:
+        print('\n\033[1;31m -->\033[0;0m Invalid input, please '
+              'enter an alphabetic character.\n')
         return False
 
 
@@ -217,7 +219,7 @@ def display_messages(
     print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
-def play_new_game(player):
+def restart_game(player):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
@@ -228,7 +230,7 @@ def play_new_game(player):
                                     f'\033[0;0m')
         if play_again == 'Y':
             print('\n A new game is starting....\n')
-            play_game(player)
+            start_game(player)
             break
         elif play_again == 'N':
             print(f'\n {player}! Thank you for playing! See you later!\n')
@@ -239,7 +241,7 @@ def play_new_game(player):
             print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
 
-def play_game(name):
+def start_game(name):
     """Initialize the game and several functions are called to verify variables,
     in that way, the code is not repeated inside this function.
     Arg: name (str): Name chosen by the user.
@@ -291,7 +293,7 @@ def play_game(name):
                     is_correct = True
                     print(f'\n {player}! You\'re a GENIUS! You got the '
                           f'word!\n')
-                    play_new_game(player)
+                    restart_game(player)
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
@@ -300,20 +302,6 @@ def play_game(name):
                 else:
                     print('\n\033[1;31m -->\033[0;0m Invalid input, enter'
                           ' a single letter or the complete word\n')
-        else:
-            if player_guess == '1':
-                print(f'\n {player}... Check the rules... \n')
-                rules = rules_help()
-                print(rules)
-                print('\n Game is continuing...\n')
-            elif player_guess == '2':
-                print(f'\n {player}, a new game is about to start...'
-                      f' Good luck!\n')
-                play_game(player)
-                print('before the break')
-                break
-            elif player_guess == '3':
-                break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
@@ -329,13 +317,13 @@ def play_game(name):
                   '/\\__/\\__/\\__/\\__\n')
             print(f'\n Congrats! You did it! {word} is the hidden word')
             is_correct = True
-            play_new_game(player)
+            restart_game(player)
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
         print(f'\n {player}! better luck the next time. The word was {word}\n')
-        play_new_game(player)
+        restart_game(player)
 
 
 intro()
