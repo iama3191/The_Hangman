@@ -210,7 +210,7 @@ def display_messages(
           '\\__/\\__/\\__\n')
     print('\033[1;31m Choose "1" for checking the rules, "2" for '
           'restarting, and "3" for exiting the game...\033[0;0m \n')
-    print(f' \033[4;33mChances left --> {tries}\033[0;0m\n')
+    print(f' \033[1;33m** You have {tries} tries **\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
     print(f'\n The hidden word is \t{dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: '
@@ -231,7 +231,7 @@ def restart_game(player):
     Arg: player(str): name of the user for displaying personal messages.
     """
     while True:
-        play_again = get_user_input(f'\n {player}, would you like to play a '
+        play_again = get_user_input(f' {player}, would you like to play a '
                                     f'new game, "Y" or "N"?\033[1;33m ---> '
                                     f'\033[0;0m')
         if play_again == 'Y':
@@ -307,6 +307,8 @@ def start_game(name):
                 else:
                     print('\n\033[1;31m -->\033[0;0m Invalid input, enter'
                           ' a single letter or the complete word\n')
+            else:
+                print('\n The word has a different length of the hidden word')
         else:
             if player_guess == '1':
                 print(f'\n {player}... Check the rules... \n')
@@ -314,8 +316,6 @@ def start_game(name):
                 print(rules)
                 print('\n Game is continuing...\n')
             elif player_guess == '2':
-                print(f'\n {player}, a new game is about to start...'
-                      f' Good luck!\n')
                 game_is_done = True
                 break
             elif player_guess == '3':
@@ -325,7 +325,8 @@ def start_game(name):
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
-        # Check the status of the word
+        # Code from https://mardiyyah.medium.com/a-simple-hangman-
+        # learnpythonthroughprojects-series-10-fedda58741b
         status = ''
         if is_correct is False:
             for letter in word:
@@ -335,14 +336,13 @@ def start_game(name):
                     status += '_'
         if status == word:
             is_correct = True
+        # End of the used code
             game_is_done = True
-    if is_correct is False:
+    if tries == 0:
         print(hangman[len(incorrect_letters)])
-        print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
-              '/\\__/\\__/\\__\n')
-        print(f'\n {player}! better luck the next time. The word was {word}\n')
+        print(f'\n {player}! The word was {word}\n')
         game_is_done = True
-    elif is_correct is True:
+    if is_correct is True:
         print(f'\n {player}! You\'re a GENIUS! {word} is the '
               f'hidden word\n')
         game_is_done = True
