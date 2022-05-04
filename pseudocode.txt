@@ -13,7 +13,7 @@ Game:
     c. If it is an alphabetic character, continue to the next comparison. (X)
 (X) Check if the letter was already used, what will happen?
     a. Ask for a new input
-( ) Is the letter in the word to guess?
+(X) Is the letter in the word to guess?
     a. 'y' --> show the place in the word, and if it is in one or more places, show them
     b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages (X)
 (X) Count the # of tries and repeat. 
@@ -21,8 +21,8 @@ Game:
 ( ) Ask to the user if he wants to play a new game
 
 #Features to implement
-( ) Show colors, simple color scheme (green for winning, red for losing and yellow as a warning)
-( ) Add more ASCII art for the game (Title: Hangman, welcome, final message )
+(Y) Show colors, simple color scheme (green for winning, red for losing and yellow as a warning)
+(N) Add more ASCII art for the game (Title: Hangman, welcome, final message )
 (N) No matter if the user gets the word, at the end, a message will be displayed with some info of the country
 (Y) A personal approach to the user: Ask for his name, and every message must be personal to him
 
@@ -40,25 +40,5 @@ https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
 
 https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
 
-#fix
-+ If the word has a letter in more than one place, it need to show in the terminal. 
-    Right now, it only shows once
-+ The user experience needs to be improve, work with whitespaces and add colors if it is possible
-+ refactorize the code, it is already hard for me to read and understand.
-+ If the user enters a correct letter, it shows hangman[0] like if the user is wrong
-+ add:
-try: 
-valid_input = player_guess.isalpha()
-except:
-    print('invalid input')
 
 
-#Ideas
-
-+ Create a function to change the display of the incorrect_letters, correct_letters, word_length and used_letters.
-Instead of printing a list, print a string
-
-
-if status is True:
-                    is_correct = True
-                    print('You have done it')

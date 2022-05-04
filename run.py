@@ -76,11 +76,14 @@ def intro():
                                 ' exiting the game \033[1;33m ---> \033[0;0m')
         try:
             answer = int(answer)
+        except ValueError:
+            print(f'\n\033[1;31m -->\033[0;0m Invalid input: {answer}')
+        else:
             if answer == 1:
                 game_rules = rules_help()
                 print(game_rules)
             elif answer == 2:
-                play_game(name)
+                start_game(name)
                 break
             elif answer == 3:
                 print(f'\n {name} see you next time!\n')
@@ -91,9 +94,6 @@ def intro():
                 print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter'
                       ' "1", "2" or "3"')
                 continue
-        except:
-            print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter "1",'
-                  ' "2" or "3"')
 
 
 def guess_word():
@@ -201,7 +201,7 @@ def display_messages(
     """
     print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
           '\\__/\\__/\\__\n')
-    print('\033[1;31;47m Choose "1" for checking the rules, "2" for '
+    print('\033[1;31m Choose "1" for checking the rules, "2" for '
           'restarting, and "3" for exiting the game...\033[0;0m \n')
     print(f' \033[4;33mChances {tries}\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
@@ -217,26 +217,29 @@ def display_messages(
     print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
-def play_new_game(player):
+def restart_game(player):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
     Arg: player(str): name of the user for displaying personal messages.
     """
-    play_again = get_user_input(f'\n {player}, would you like to play a '
-                                f'new game, "Y" or "N"?\033[1;33m ---> '
-                                f'\033[0;0m')
-    while play_again != 'Y' or play_again != 'N':
-        print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
-    if play_again == 'Y':
-        print('\n A new game is starting....\n')
-        play_game(player)
-    else:
-        print(f'\n {player}! Thank you for playing! See you later!\n')
-        print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
-              '\\__/\\__/\\__/\\__\n')
+    while True:
+        play_again = get_user_input(f'\n {player}, would you like to play a '
+                                    f'new game, "Y" or "N"?\033[1;33m ---> '
+                                    f'\033[0;0m')
+        if play_again == 'Y':
+            print('\n A new game is starting....\n')
+            start_game(player)
+            break
+        elif play_again == 'N':
+            print(f'\n {player}! Thank you for playing! See you later!\n')
+            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
+                  '\\__/\\__/\\__/\\__\n')
+            break
+        else:
+            print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
 
-def play_game(name):
+def start_game(name):
     """Initialize the game and several functions are called to verify variables,
     in that way, the code is not repeated inside this function.
     Arg: name (str): Name chosen by the user.
@@ -249,7 +252,7 @@ def play_game(name):
     incorrect_words = []
     is_correct = False
     word_length = ['_' for i in range(len(word))]
-
+    game_is_done = False
     # loop that'll go until the try #8 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
@@ -286,9 +289,7 @@ def play_game(name):
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
-                    print(f'\n {player}! You\'re a GENIUS! You got the '
-                          f'word!\n')
-                    play_new_game(player)
+                    game_is_done = True
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
@@ -306,12 +307,15 @@ def play_game(name):
             elif player_guess == '2':
                 print(f'\n {player}, a new game is about to start...'
                       f' Good luck!\n')
-                play_game(player)
+                game_is_done = True
+                break
             elif player_guess == '3':
+                game_is_done = True
                 break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
+        # Check the status of the word
         status = ''
         if is_correct is False:
             for letter in word:
@@ -320,17 +324,18 @@ def play_game(name):
                 else:
                     status += '_'
         if status == word:
-            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
-                  '/\\__/\\__/\\__/\\__\n')
-            print(f'\n Congrats! You did it! {word} is the hidden word')
             is_correct = True
-            play_new_game(player)
-    if is_correct is False:
+            game_is_done = True
+    if is_correct is False and tries == 0:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
-        print(f'\n {player} better luck the next time. The word was {word}\n')
-        play_new_game(player)
+        print(f'\n {player}! better luck the next time. The word was {word}\n')
+        restart_game(player)
+    if game_is_done:
+        print(f'\n {player}! You\'re a GENIUS! {word} is the '
+              f'hidden word\n')
+        restart_game(player)
 
 
 intro()
