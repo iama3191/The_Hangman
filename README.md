@@ -41,6 +41,18 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Strategy
 
+* Reasons a user may want to visit the website
+
+    - To play a guessing game as a single player with a limited number of tries.
+
+    - To test his knowledge about countries of the world.
+
+* Reasons for the website
+
+    - Giving to the user the chance to guess the hidden country within 8 tries.
+
+    - Giving to the user the possibility to test how many countries he knows.
+
 ### Scope
 
 ### Structure
