@@ -1,5 +1,6 @@
 import random
 import re
+import sys
 from words import country_words
 from stages import hangman
 
@@ -7,7 +8,7 @@ from stages import hangman
 def get_user_input(message):
     """ Show  prompt to the user and get input from the user.
 
-    Sanitize the input as follows
+    Sanitize the input as follows:
     - Remove leading and trailing spaces
     - Convert to uppercase the input for the later comparisons
 
@@ -21,7 +22,8 @@ def get_user_input(message):
 
 def rules_help():
     """ Show rules to the user
-    Arg: name (str) : Name of the user to display in print statements
+
+    Returns : rules (str): The rules for understanding the game
     """
     rules = ''' \n <------------------------------------------------------------>
     \n \033[3;33m Rules: \033[0;0m \n
@@ -30,11 +32,11 @@ def rules_help():
     1. A random word is generated from a list of 157 countries.\n
     2. You can enter one letter at the time or you can try to complete the
  whole word.\n
-    3. You have only 8 tries to discover the secret country.\n
+    3. You have only 8 tries to discover the hidden word.\n
     4. You can only use characters from the latin alphabet (vowels and
  consonants).
     \n\033[3;33m YOU WON'T BE PENALIZED FOR THE FOLLOWING CASES: \033[0;0m \n
-    1. Enter a numeric character or a symbol.\n
+    1. Enter a number or a symbol.\n
     2. Enter a word with a different length than the secret word. \n
     3. Enter a letter that has already been used.
     \n <------------------------------------------------------------>\n'''
@@ -43,8 +45,10 @@ def rules_help():
 
 def validation_user_name(mssg):
     """Validate the user's name so the user can enter an alphanumeric name.
-    And the input needs to be longer than one character
+    And the input needs to be longer than one character.
+
     Arg: mssg (str): Message asking a name to the user
+
     Returns: user_name(str): user's input is capitalized
     """
     user_name = input(mssg).strip()
@@ -83,6 +87,7 @@ def intro():
                 game_rules = rules_help()
                 print(game_rules)
             elif answer == 2:
+                print(f'\n Good luck, {name}!\n\n New game starting...\n')
                 start_game(name)
                 break
             elif answer == 3:
@@ -112,7 +117,7 @@ def guess_is_alpha(user_input):
     Arg: user_input (str) : The input from the user to guess
     the secret word
 
-    Returns: boolean
+    Returns: boolean: Returns True or False
     """
     if user_input.isalpha():
         return True
@@ -120,28 +125,29 @@ def guess_is_alpha(user_input):
         return False
 
 
-def check_in_used_letters(user_input, list_used_letters):
+def check_in_used_letters(player_guess, used_letters):
     """ Check if the input (a character) is on the
     used_letters list
 
     Arg:
-    - user_input (str) : the input as a alphabetic character
-    - list_used_letters (list) : list with all the letters that
+    - player_guess (str) : the input as a alphabetic character
+    - used_letters (list) : list with all the letters that
     the user is already used
 
     Returns: boolean
     """
-    if user_input in list_used_letters:
+    if player_guess in used_letters:
         return True
     else:
         return False
 
 
-def letter_in_word(user_input, word):
+def letter_in_word(player_guess, word):
     """ Check if the letter entered from the user is in the word,
     and  in what positions are they
+
     Arg:
-    - user_input (str) : user's input for guessing the word
+    - player_guess (str) : user's input for guessing the word
     - word (str) : the secret word that the user needs to guess
     Returns: positions (list) : with the indexes where the ocurrences existed
 
@@ -150,7 +156,7 @@ def letter_in_word(user_input, word):
     character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20
     where%20the%20pattern%20occurs.
     """
-    letter = user_input
+    letter = player_guess
     positions = [letter.start() for letter in re.finditer(letter, word)]
     return positions
 
@@ -163,7 +169,7 @@ def list_to_string(list_letter):
     Arg: list_letter (list) : list that stored elements (letters or words with
     the same length as the hidden word)
 
-    Returns: str
+    Returns: str: all the letters ordered alphabetically
 
     This code is from the next link:
     https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
@@ -184,6 +190,7 @@ def display_messages(
     incorrect_words
 ):
     """ Print all the neccessary messages to the user for each round
+
     Arg:
     - player (str): Chosen name by the user.
     - word (str): Random country from the list country_words.
@@ -203,7 +210,7 @@ def display_messages(
           '\\__/\\__/\\__\n')
     print('\033[1;31m Choose "1" for checking the rules, "2" for '
           'restarting, and "3" for exiting the game...\033[0;0m \n')
-    print(f' \033[4;33mChances {tries}\033[0;0m\n')
+    print(f' \033[4;33mChances left --> {tries}\033[0;0m\n')
     print(f' {player}! your word has {str(len(word))} letters\n')
     print(f'\n The hidden word is \t{dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: '
@@ -220,6 +227,7 @@ def display_messages(
 def restart_game(player):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
+
     Arg: player(str): name of the user for displaying personal messages.
     """
     while True:
@@ -240,8 +248,8 @@ def restart_game(player):
 
 
 def start_game(name):
-    """Initialize the game and several functions are called to verify variables,
-    in that way, the code is not repeated inside this function.
+    """Initialize the game and several functions are called to verify variables.
+
     Arg: name (str): Name chosen by the user.
     """
     player = name
@@ -266,8 +274,9 @@ def start_game(name):
             correct_letters,
             used_letters,
             incorrect_words)
-        player_guess = get_user_input(' Enter a letter or the full word'
-                                      ' \033[1;33m ---> \033[0;0m')
+        player_guess = get_user_input(f' Enter a letter or a word with'
+                                      f' {len(word)} letters.\033[1;33m '
+                                      f'---> \033[0;0m')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
         if validate_player_guess and not char_used_letters:
@@ -310,8 +319,9 @@ def start_game(name):
                 game_is_done = True
                 break
             elif player_guess == '3':
-                game_is_done = True
-                break
+                print('\n You\'re exiting the game\n')
+                print(f' {player}, see you later!\n')
+                sys.exit(0)
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
@@ -326,15 +336,17 @@ def start_game(name):
         if status == word:
             is_correct = True
             game_is_done = True
-    if is_correct is False and tries == 0:
+    if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
         print(f'\n {player}! better luck the next time. The word was {word}\n')
-        restart_game(player)
-    if game_is_done:
+        game_is_done = True
+    elif is_correct is True:
         print(f'\n {player}! You\'re a GENIUS! {word} is the '
               f'hidden word\n')
+        game_is_done = True
+    if game_is_done:
         restart_game(player)
 
 
