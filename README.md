@@ -15,7 +15,7 @@ This game is adapted for playing against the computer. All the words belong to t
 ## Index - Table of Contents
 * [The Hangman](#the-hangman)
 * [About](#about)
-* [Index - Table og Contents](#index---table-of-contents)
+* [Index - Table of Contents](#index---table-of-contents)
 * [User Experience Research and Design](#user-experience-research-and-design)
     * [Strategy](#strategy)
     * [Scope](#scope)
@@ -25,9 +25,9 @@ This game is adapted for playing against the computer. All the words belong to t
 * [Features](#features)
     * [Current Features](#current-features)
     * [Future Features](#future-features)
-* [Manual Testing](#manual-testing)
+* [Testing](#testing)
     * [User Stories](#user-stories)
-    * [Bugs](#bugs)
+    * [Functionality](#functionality)
 * [Deployment](#deployment)
     * [Fork and Deploy with GitHub](#fork-and-deploy-with-github)
     * [Deploy with Heroku](#deploy-with-heroku)
@@ -55,11 +55,24 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Future Features
 
-## Manual Testing
+## Testing
 
 ### User Stories
 
-### Bugs
+### Functionality
+
+|                    **  Test Label **                    |                                                                      **  Test Action **                                                                     |                                                                                                                                                      Expected Outcome                                                                                                                                                     |   Test Outcome  |
+|:-------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------:|
+|               **  Validate user’s name **               |   User enters an alphanumeric input and longer than 1 character as a name                                                                                   |   User’s input with the first letter  capitalized if name starts with a letter                                                                                                                                                                                                                                            |       PASS      |
+|              **  Validate user's input  **              |   User enters a letter or a word                                                                                                                            |   User's input in uppercase                                                                                                                                                                                                                                                                                               |       PASS      |
+|                  **  Using main menu **                 |   User selects one option from the main menu: 1 for checking the rules, 2 for starting the game, and 3 for exiting the game                                 |   If user selects option ‘1’: the rules are displayed, and the main menu appears again.   If user selects option ‘2’: the game starts.   If user selects option ‘3’: the game ends.                                                                                                                                       |       PASS      |
+|               **  Check input’s length **               |   User enters a single character or a word with the same length as the hidden word                                                                          |   If user enters a character, tells if the letter is or isn’t in the word.   If user enters a word with the same  length, tells if the user’s word is or isn’t the same as the hidden word.   If user enters a word with a different length than the hidden word, a message is displayed of ‘INVALID INPUT’               |       PASS      |
+|      **  Hangman’s stages display at every round **     |   User enters a valid input. ( A letter or a word with the same length as the hidden word)                                                                  |   If user enters a correct input, number of tries stay the same.   If user enters an incorrect input, number of tries decreases by one, and appears an updated stage of the hangman. Until the number of tries equals ‘0’                                                                                                 |       PASS      |
+|                    **  Play again **                    |   User enters ‘Y’ or ’N’  for deciding if he wants to play a new game.                                                                                      |   If user enters ‘Y’  or ‘y’, a new game will start.   If user enters ’N’ or ’n', the game is ended.                                                                                                                                                                                                                      |       PASS      |
+|                **  Checking the rules **                |   User asks for help at any moment of the game, he needs to enter ‘1’ instead of a letter or a full word.                                                   |   Rules are shown and the game continues.                                                                                                                                                                                                                                                                                 |       PASS      |
+|                 **  Exiting the game **                 |   User decides to exit  the game at any moment, he needs to enter ‘3’ instead of a letter or a full word.                                                   |   The game ends with a message of goodbye to the user                                                                                                                                                                                                                                                                     |       PASS      |
+|                **  Restarting the game **               |   User decides to restart the game at any moment, he needs to enter ‘2’ instead of a letter or a full word.                                                 |   The user will be asked if he wants to start a new game, if the user answers ‘Y’ or ‘y’, the game will start with a new word.                                                                                                                                                                                            |       PASS      |
+| **  Messages display at the beginning of every round ** |   User needs to enter valid inputs for guessing the hidden word ( valid inputs: an alphabetic character or a word with the same length as the hidden word)  |   When user decides to play, will have on the terminal an update for each round: general instructions, number of tries left, length of the hidden word, used letters that aren’t in the hidden word, letters that are in the hidden word, incorrect words with the same length as the hidden word, stage of the hangman.  |       PASS      |
 
 ## Deployment
 
@@ -68,6 +81,10 @@ This game is adapted for playing against the computer. All the words belong to t
 ### Deploy with Heroku
 
 ## Credit
+
+* Table Generator with markdown style guide:
+
+    https://www.tablesgenerator.com/markdown_tables# 
 
 ### People
 
