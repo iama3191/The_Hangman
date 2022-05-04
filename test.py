@@ -117,8 +117,6 @@ def guess_is_alpha(user_input):
     if user_input.isalpha():
         return True
     else:
-        print('\n\033[1;31m -->\033[0;0m Invalid input, please '
-              'enter an alphabetic character.\n')
         return False
 
 
@@ -292,8 +290,6 @@ def start_game(name):
                 if player_guess == word:
                     is_correct = True
                     game_is_done = True
-                    print(f'\n {player}! You\'re a GENIUS! You got the '
-                          f'word!\n')
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
@@ -302,6 +298,20 @@ def start_game(name):
                 else:
                     print('\n\033[1;31m -->\033[0;0m Invalid input, enter'
                           ' a single letter or the complete word\n')
+        else:
+            if player_guess == '1':
+                print(f'\n {player}... Check the rules... \n')
+                rules = rules_help()
+                print(rules)
+                print('\n Game is continuing...\n')
+            elif player_guess == '2':
+                print(f'\n {player}, a new game is about to start...'
+                      f' Good luck!\n')
+                game_is_done = True
+                break
+            elif player_guess == '3':
+                game_is_done = True
+                break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
@@ -314,18 +324,17 @@ def start_game(name):
                 else:
                     status += '_'
         if status == word:
-            print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
-                  '/\\__/\\__/\\__/\\__\n')
-            print(f'\n Congrats! You did it! {word} is the hidden word')
             is_correct = True
             game_is_done = True
-    if is_correct is False:
+    if is_correct is False and tries == 0:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
         print(f'\n {player}! better luck the next time. The word was {word}\n')
         restart_game(player)
     if game_is_done:
+        print(f'\n {player}! You\'re a GENIUS! {word} is the '
+              f'hidden word\n')
         restart_game(player)
 
 
