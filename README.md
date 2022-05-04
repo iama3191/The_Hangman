@@ -84,10 +84,28 @@ This game is adapted for playing against the computer. All the words belong to t
 
 * Table Generator with markdown style guide:
 
-    https://www.tablesgenerator.com/markdown_tables# 
+    https://www.tablesgenerator.com/markdown_tables#
 
 ### People
 
+* Mentor support, guidance, and tips to improve my coding skills throughout the project:
+
+    - Brian Macharia
+
 ### Python Library Dependecies and Packages
 
-### Software & Web Applications
+### Others
+
+* Add color to the terminal:
+
+    - https://stackabuse.com/how-to-print-colored-text-in-python/
+
+* Checking code information (syntax and uses):
+
+    - https://www.w3schools.com/python/ref_string_isalpha.asp
+    
+    - https://www.educative.io/edpresso/how-to-compare-two-strings-in-python
+
+    - https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
+
+    - https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
