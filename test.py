@@ -254,7 +254,7 @@ def start_game(name):
     incorrect_words = []
     is_correct = False
     word_length = ['_' for i in range(len(word))]
-
+    game_is_done = False
     # loop that'll go until the try #8 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
@@ -291,9 +291,9 @@ def start_game(name):
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
+                    game_is_done = True
                     print(f'\n {player}! You\'re a GENIUS! You got the '
                           f'word!\n')
-                    restart_game(player)
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
@@ -305,6 +305,7 @@ def start_game(name):
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input, please '
                       'enter a new letter.\n')
+        # Check the status of the word
         status = ''
         if is_correct is False:
             for letter in word:
@@ -317,12 +318,14 @@ def start_game(name):
                   '/\\__/\\__/\\__/\\__\n')
             print(f'\n Congrats! You did it! {word} is the hidden word')
             is_correct = True
-            restart_game(player)
+            game_is_done = True
     if is_correct is False:
         print(hangman[len(incorrect_letters)])
         print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__'
               '/\\__/\\__/\\__\n')
         print(f'\n {player}! better luck the next time. The word was {word}\n')
+        restart_game(player)
+    if game_is_done:
         restart_game(player)
 
 
