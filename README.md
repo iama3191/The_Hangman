@@ -94,8 +94,21 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 ### Current Features
 
+- Main menu with three options: (1) Check the rules, (2) Start the game and (3) Quit the game
+
+- List with letters entered by the user in alphabetical order: incorrect letters (do not belong to the secret word), correct letters (belong to the secret word), used letters (all valid options entered).
+
+- The state of the hangman is updated every time the user loses a chance, therefore it warns the user of the danger of losing.
+
+- At any point in the game, the user can choose between '1' check rules, '2' restart the game, and '3' exit the game. Choosing '1', the rules are displayed and immediately the game continues without any changes, choosing '2', the user is asked if he wants a new game, saying 'y' or 'Y', the new one is started, if you choose 'n' or 'N', immediately the game ends. Choosing '3' causes the program to say goodbye to the user and exit.
 
 ### Future Features
+
+- Create and add a scoring system. The number of attempts left are the points that are added to the user.
+
+- Create a table of players based on the score, the table would show: position in the game, username and points collected.
+
+- Create several categories for the user to decide what type of word he would like to guess.
 
 ## Testing
 
