@@ -79,9 +79,16 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Structure
 
+The game has a series of logical steps for easy interaction with the program. The user is accompanied at all times with messages so that he understands what input he has to enter and so that he can make a decision at any time without waiting for the end of the game. At the same time, for every action the user performs, he will receive a response, either negative or positive.
+
 ### Skeleton
 
+The game is built to follow a slightly more user-friendly visual pattern, there are certain line designs at each drastic change of the game: At the start of the game, at the end of the game, at each attempt and when showing the rules. In addition, new lines were used at the end of each message so that the screen was not overloaded. 
+
 ### Surface
+
+Three colors in addition to the default white were used to create an alert to the user as to the level of importance of what is happening in the game.
+Yellow is used to draw the user's attention to how many chances he has after each letter is entered, red was used to warn him that the entered data is invalid or incorrect (not part of the secret word). And green is used to tell the user that he is succeeding.
 
 ## Features
 
