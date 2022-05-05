@@ -25,6 +25,9 @@ This game is adapted for playing against the computer. All the words belong to t
 * [Features](#features)
     * [Current Features](#current-features)
     * [Future Features](#future-features)
+* [Technologies Used](#technologies-used)
+    * [Languages Used](#languages-used)
+    * [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
 * [Testing](#testing)
     * [User Stories](#user-stories)
     * [Functionality](#functionality)
@@ -111,6 +114,20 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 - Create several categories for the user to decide what type of word he would like to guess.
 
+## Technologies Used
+
+### Languages Used
+
+* [Python 3.8.11](https://www.python.org/)
+
+### Frameworks, Libraries and Programs Used
+
+* [Git](https://git-scm.com): Was used for version control by using the Gitpod terminal to commit to Git and Push to GitHub.
+
+* [GitHub](https://github.com): Was used as the repository for the project's code after being pushed from Git.
+
+* [Heroku](https://www.heroku.com): Was used to deploy the application and provides an environment in which the code can execute.
+
 ## Testing
 
 ### User Stories
@@ -193,7 +210,6 @@ After linking your app to your workspace with one of the above steps, you can th
 
     - Brian Macharia
 
-### Python Library Dependecies and Packages
 
 ### Others
 
