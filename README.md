@@ -29,7 +29,8 @@ This game is adapted for playing against the computer. All the words belong to t
     * [User Stories](#user-stories)
     * [Functionality](#functionality)
 * [Deployment](#deployment)
-    * [Fork and Deploy with GitHub](#fork-and-deploy-with-github)
+    * [How to clone the GitHub repository](#how-to-clone-the-github-repository)
+    * [How to fork the GitHub repository](#how-to-fork-the-github-repository)
     * [Deploy with Heroku](#deploy-with-heroku)
 * [Credit](#credit)
     * [People](#people)
@@ -131,7 +132,35 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 ## Deployment
 
-### Fork and Deploy with GitHub
+### How to clone the GitHub repository
+
+1. Go to the https://github.com/iama3191/hangman to access the repository on GitHub.
+
+2. Click on the 'Code' button which will bring a dropdown box.
+
+3. Click the HTTPS and copy the link.
+
+4. Open Gitbash terminal.
+
+5. Change the current working directory to where you want the cloned directory to be.
+
+6. Type `git clone`, and then paste the URL you copied earlier, hit Enter to start the cloning process.
+
+7. Any changes made to the local clone can be pushed back to the repository using the following steps:
+
+        a. Update the code as needed.
+        b. Go to the terminal and type git add . (or other file_name')
+        c. Type git commit -m "brief description of the change"
+        d. Type git push
+
+### How to fork the GitHub repository
+
+1. Go to the website's repository on GitHub: https://github.com/iama3191/hangman
+
+2. Go to the 'Fork' button on the right side of the screen and click.
+
+3. Now you have a copy of the repository into your own GitHub account to make changes without affecting the original repository.
+
 
 ### Deploy with Heroku
 
@@ -150,7 +179,6 @@ Once you have followed the appropriate step above, your Heroku app will be linke
 **HOW TO DEPLOY**
 
 After linking your app to your workspace with one of the above steps, you can then deploy new versions of the app by running the command `git push heroku main` and your app will be deployed to Heroku.
-
 
 
 ## Credit
