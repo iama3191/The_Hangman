@@ -1,3 +1,6 @@
+"""
+Importing the libraries to use in system
+"""
 import random
 import re
 import sys
@@ -87,7 +90,7 @@ def intro():
                 game_rules = rules_help()
                 print(game_rules)
             elif answer == 2:
-                print(f'\n Good luck, {name}!\n\n New game starting...\n')
+                print(f'\n Good luck, {name}! New game is starting...\n')
                 start_game(name)
                 break
             elif answer == 3:
@@ -206,13 +209,12 @@ def display_messages(
     - incorrect_words (lst): list with all the words with the same length
     as the hidden word that aren't correct
     """
-    print('\n__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/'
-          '\\__/\\__/\\__\n')
+    print(' ______________\n')
     print('\033[1;31m Choose "1" for checking the rules, "2" for '
           'restarting, and "3" for exiting the game...\033[0;0m \n')
-    print(f' \033[1;33m** You have {tries} tries **\033[0;0m\n')
-    print(f' {player}! your word has {str(len(word))} letters\n')
-    print(f'\n The hidden word is \t{dupl_word_length}\n')
+    print(f'\t\t\t\t\033[1;33m** You have {tries} tries **\033[0;0m\n')
+    print(f'\n {player}! your word has {str(len(word))} letters:'
+          f'  {dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: '
           f'{list_to_string(incorrect_letters)}\033[0;0m\n')
     print(f'\033[1;32m Correct letters: '
@@ -231,7 +233,7 @@ def restart_game(player):
     Arg: player(str): name of the user for displaying personal messages.
     """
     while True:
-        play_again = get_user_input(f' {player}, would you like to play a '
+        play_again = get_user_input(f'\n {player}, would you like to play a '
                                     f'new game, "Y" or "N"?\033[1;33m ---> '
                                     f'\033[0;0m')
         if play_again == 'Y':
@@ -275,7 +277,7 @@ def start_game(name):
             used_letters,
             incorrect_words)
         player_guess = get_user_input(f' Enter a letter or a word with'
-                                      f' {len(word)} letters.\033[1;33m '
+                                      f' {len(word)} letters\033[1;33m '
                                       f'---> \033[0;0m')
         validate_player_guess = guess_is_alpha(player_guess)
         char_used_letters = check_in_used_letters(player_guess, used_letters)
