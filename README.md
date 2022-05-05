@@ -135,6 +135,24 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 ### Deploy with Heroku
 
+The deployments are donde manually from the terminal.
+
+**If you are creating a new deployment/app**
+
+- Run the command `heroku login -i ` and login with email and password when prompted. Then run the command `heroku create your_app_name_here` to create a new app, replacing `your_app_name_here` with the name you want to give to your app. This will create a new Heroku app and link it to your Gitpod terminal. You can access the app via the Heroku dashboard and set up your config vars.
+
+**If you already have an app created which uses automatic deploys.**
+
+- Run the command `heroku login -i` and login with the email and password when prompted. Then run the following command: `heroku git:remote -a your_app_name_here` and replace `your_app_name_here` with the name of your Heroku app. This will link the app to your Gitpod terminal.
+
+Once you have followed the appropriate step above, your Heroku app will be linked to your workspace.
+
+**HOW TO DEPLOY**
+
+After linking your app to your workspace with one of the above steps, you can then deploy new versions of the app by running the command `git push heroku main` and your app will be deployed to Heroku.
+
+
+
 ## Credit
 
 * Table Generator with markdown style guide:
