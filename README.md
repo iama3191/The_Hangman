@@ -55,6 +55,28 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Scope
 
+* What a user may expect
+
+    - Clear instructions to play the game
+
+    - Clear information on how many attempts he has, what letters he has used, warning messages when something went wrong, updated hangman stage.
+
+* What a user may want
+
+    - The possibility to restart the game at any time of the game.
+
+    - The possibility to ask for help at any time of the game.
+
+    - The possibility to exit the game at any time of the game.
+
+    - That the words in the game belong to a specific category.
+
+* As a developer what I expect
+
+    - The user finds an entertaining game and easy to play.
+
+    - Well-commented code for easy maintenance.
+
 ### Structure
 
 ### Skeleton
