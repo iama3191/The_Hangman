@@ -247,7 +247,10 @@ def restart_game(player):
 
 
 def exit_game(player):
-    """ask the question to exit the game"""
+    """Validates the user's answer when he wants to exit, in case he makes
+    a mistake entering the number '3' when he didn't want to.
+
+    Arg: player (str): user's name for a more personal approach"""
     while True:
         question_exiting_game = get_user_input(f'\n {player}, are you sure'
                                                f' you want to exit the '
@@ -257,7 +260,7 @@ def exit_game(player):
             print(f' {player}, see you later!\n')
             sys.exit(0)
         elif question_exiting_game == 'N':
-            return True
+            return
         else:
             print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
@@ -331,8 +334,19 @@ def start_game(name):
                 print(rules)
                 print('\n Game is continuing...\n')
             elif player_guess == '2':
-                restart_game(player)
-                print(f'\n {player}! Returning to game... \n')
+                # TO-DO: Change the function, once the user says he wants
+                # a new  game, it starts but whatever is the result it
+                # always returns to the previous game when he wanted to
+                # start new game. 
+                # Idea: make the question here, in case is 'Y', call 
+                # the function start_game.  In case, is 'n' continue
+                new_match = get_user_input(' \n Do you want a new game? ')
+                if new_match == 'Y':
+                    start_game(player)
+                elif new_match == 'N':
+                    print('\n Returning to the current game...\n')
+                else:
+                    print('\n this is an invalid input, and I need to do more to fix it"')
             elif player_guess == '3':
                 exit_game(player)
             else:
