@@ -91,8 +91,7 @@ def intro():
                 print(game_rules)
             elif answer == 2:
                 print(f'\n Good luck, {name}! New game is starting...\n')
-                start_game(name)
-                break
+                return name
             elif answer == 3:
                 exit_game(name)
                 print('\n You\'re returning to the main menu...')
@@ -224,22 +223,23 @@ def display_messages(
     print(f'{hangman[len(incorrect_letters + incorrect_words)]}\n')
 
 
-def restart_game(player):
+def restart_game(player, game_is_done):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
 
     Arg: player(str): name of the user for displaying personal messages.
     """
-    while True:
-        play_again = get_user_input(f'\n {player}, would you like to play a '
-                                    f'new game, "Y" or "N"?\033[1;33m ---> '
-                                    f'\033[0;0m')
+    while game_is_done:
+        play_again = get_user_input(' Would you like to play a new'
+                                    ' game, "Y" or "N"?\033[1;33m ---> '
+                                    '\033[0;0m')
         if play_again == 'Y':
             print('\n A new game is starting....\n')
-            start_game(player)
-            break
+            start_game(player, game_is_done)
+            return game_is_done
         elif play_again == 'N':
-            return
+            game_is_done = False
+            return game_is_done
         else:
             print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
@@ -265,12 +265,12 @@ def exit_game(player):
             print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N": ')
 
 
-def start_game(name):
+def start_game(new_player, game_is_done):
     """Initialize the game and several functions are called to verify variables.
 
     Arg: name (str): Name chosen by the user.
     """
-    player = name
+    player = new_player
     word = guess_word()
     tries = 8
     incorrect_letters = []
@@ -278,7 +278,6 @@ def start_game(name):
     incorrect_words = []
     is_correct = False
     word_length = ['_' for i in range(len(word))]
-    game_is_done = False
     # loop that'll go until the try #8 and while user doesn't guess the word
     while tries > 0 and is_correct is False:
         used_letters = incorrect_letters + correct_letters
@@ -334,19 +333,12 @@ def start_game(name):
                 print(rules)
                 print('\n Game is continuing...\n')
             elif player_guess == '2':
-                # TO-DO: Change the function, once the user says he wants
-                # a new  game, it starts but whatever is the result it
-                # always returns to the previous game when he wanted to
-                # start new game. 
-                # Idea: make the question here, in case is 'Y', call 
-                # the function start_game.  In case, is 'n' continue
-                new_match = get_user_input(' \n Do you want a new game? ')
-                if new_match == 'Y':
-                    start_game(player)
-                elif new_match == 'N':
-                    print('\n Returning to the current game...\n')
+                game_is_done = True
+                resume_game = restart_game(player, game_is_done)
+                if resume_game is False:
+                    print('\n Returning to the game...')
                 else:
-                    print('\n this is an invalid input, and I need to do more to fix it"')
+                    break
             elif player_guess == '3':
                 exit_game(player)
             else:
@@ -373,10 +365,25 @@ def start_game(name):
         print(f'\n {player}! You\'re a GENIUS! {word} is the '
               f'hidden word\n')
         game_is_done = True
-    if game_is_done:
-        restart_game(player)
-        print('\n You\'re exiting the game\n')
-        print(f' {player}, see you later!\n')
 
 
-intro()
+def main():
+    """Initialize the game and restart after each round if t
+    he user wants to"""
+    game_is_done = False
+    new_player = intro()
+    while game_is_done is False:
+        start_game(new_player, game_is_done)
+        end_game = get_user_input(f'\n {new_player}, would you like to play '
+                                  f'again? "Y" or "N" ')
+        if end_game == 'N':
+            game_is_done = True
+            break
+        elif end_game == 'Y':
+            game_is_done = False
+        else:
+            print('\n Invalid input... "Y" or "N" ')
+    print('\n Thank for playing, see you next time...')
+
+
+main()
