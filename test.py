@@ -94,10 +94,8 @@ def intro():
                 start_game(name)
                 break
             elif answer == 3:
-                print(f'\n {name} see you next time!\n')
-                print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\'
-                      '__/\\__/\\__/\\__/\\__\n')
-                break
+                exit_game(name)
+                print('\n You\'re returning to the main menu...')
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter'
                       ' "1", "2" or "3"')
@@ -247,7 +245,7 @@ def restart_game(player):
 
 
 def exit_game(player):
-    """Validates the user's answer when he wants to exit, in case he makes
+    """Validate the user's answer when he wants to exit, in case he makes
     a mistake entering the number '3' when he didn't want to.
 
     Arg: player (str): user's name for a more personal approach"""
@@ -256,8 +254,10 @@ def exit_game(player):
                                                f' you want to exit the '
                                                f'game? "Y" or "N": ')
         if question_exiting_game == 'Y':
-            print('\n You\'re exiting the game\n')
-            print(f' {player}, see you later!\n')
+            print('\n You\'re exiting the game...\n')
+            print(f' {player}, see you next time!\n')
+            print(' __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\'
+                  '__/\\__/\\__/\\__/\\__\n')
             sys.exit(0)
         elif question_exiting_game == 'N':
             return
