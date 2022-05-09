@@ -59,25 +59,27 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Scope
 
-* What a user may expect
+* What a user may want:
 
     - Clear instructions to play the game
 
-    - Clear information on how many attempts he has, what letters he has used, warning messages when something went wrong, updated hangman stage.
-
-* What a user may want
+    - Clear messages on how many attempts he has, what letters he has used, warning messages when something went wrong, updated hangman stage.
 
     - The possibility to restart the game at any time of the game.
 
-    - The possibility to ask for help at any time of the game.
+    - The possibility to check the rules at any time of the game.
 
     - The possibility to exit the game at any time of the game.
+    
+    - The possibility to resume the game if he doesn't want to exit or restart the game.
 
     - That the words in the game belong to a specific category.
+    
+    - After each round, he can decide to play a new round or simply exit the game.
 
 * As a developer what I expect
 
-    - The user finds an entertaining game and easy to play.
+    - The user finds an entertaining and easy game to play.
 
     - Well-commented code for easy maintenance.
 
@@ -104,7 +106,7 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 - The state of the hangman is updated every time the user loses a chance, therefore it warns the user of the danger of losing.
 
-- At any point in the game, the user can choose between '1' check rules, '2' restart the game, and '3' exit the game. Choosing '1', the rules are displayed and immediately the game continues without any changes, choosing '2', the user is asked if he wants a new game, saying 'y' or 'Y', the new one is started, if you choose 'n' or 'N', immediately the game ends. Choosing '3' causes the program to say goodbye to the user and exit.
+- At any point in the game, the user can choose between '1' check rules, '2' restart the game, and '3' exit the game. Choosing '1', the rules are displayed and immediately the game continues without any changes, choosing '2', the user is asked if he wants a new game, saying 'y' or 'Y', the new one is started, if he chooses 'n' or 'N', the game will resume. While choosing '3', the user will be asked if he's really sure to exit the game.
 
 ### Future Features
 
