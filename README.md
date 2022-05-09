@@ -1,6 +1,6 @@
 # The Hangman
 
-![Responsive Design](assets/responsive.png)
+![Responsive Design](assets/responsive_design.png)
 
 [Link to Website](https://countries-hangman.herokuapp.com/)
 
@@ -86,6 +86,22 @@ This game is adapted for playing against the computer. All the words belong to t
 ### Structure
 
 The game has a series of logical steps for easy interaction with the program. The user is accompanied at all times with messages so that he understands what input he has to enter and so that he can make a decision at any time without waiting for the end of the game. At the same time, for every action the user performs, he will receive a response, either negative or positive.
+
+- The user will have a main menu for deciding the next step to follow: check the rules, start the game or exit the game.
+
+![Main menu](assets/main_menu.png)
+
+- If the user wants to check the rules, they will be displayed.
+
+![Rules](assets/rules.png)
+
+- The user will have relevant information for each try ( number of letters of the hidden word, number of left tries, used letters, hangman's stage...)
+
+![Message for the user](assets/user_messages.png)
+
+- Everytime the user doesn't guess a letter, the hangman is updated for a new stage. In the following image you can see 3 letters in the list of incorrect letters and the hanged man is represented with his third state
+
+![Hangman stage](assets/hangman_stages.png)
 
 ### Skeleton
 
