@@ -1,6 +1,6 @@
 # The Hangman
 
-![Responsive Design](assets/responsive_design.png)
+![Responsive Design](assets/responsive_design.png "Responsive design of the game")
 
 [Link to Website](https://countries-hangman.herokuapp.com/)
 
@@ -87,21 +87,6 @@ This game is adapted for playing against the computer. All the words belong to t
 
 The game has a series of logical steps for easy interaction with the program. The user is accompanied at all times with messages so that he understands what input he has to enter and so that he can make a decision at any time without waiting for the end of the game. At the same time, for every action the user performs, he will receive a response, either negative or positive.
 
-- The user will have a main menu for deciding the next step to follow: check the rules, start the game or exit the game.
-
-![Main menu](assets/main_menu.png)
-
-- If the user wants to check the rules, they will be displayed.
-
-![Rules](assets/rules.png)
-
-- The user will have relevant information for each try ( number of letters of the hidden word, number of left tries, used letters, hangman's stage...)
-
-![Message for the user](assets/user_messages.png)
-
-- Everytime the user doesn't guess a letter, the hangman is updated for a new stage. In the following image you can see 3 letters in the list of incorrect letters and the hanged man is represented with his third state
-
-![Hangman stage](assets/hangman_stages.png)
 
 ### Skeleton
 
@@ -116,13 +101,26 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 
 ### Current Features
 
-- Main menu with three options: (1) Check the rules, (2) Start the game and (3) Quit the game
+- Main menu with three options: (1) Check the rules, (2) Start the game and (3) Exit the game
+
+![Main menu](assets/main_menu.png "Main menu: '1' Help, '2' Play, and '3' Exit")
 
 - List with letters entered by the user in alphabetical order: incorrect letters (do not belong to the secret word), correct letters (belong to the secret word), used letters (all valid options entered).
 
-- The state of the hangman is updated every time the user loses a chance, therefore it warns the user of the danger of losing.
+![Message for the user](assets/user_messages.png "Relevant information for the user")
+
+- The state of the hangman is updated every time the user loses a chance, therefore it warns the user of the danger of losing. In the following image you can see 3 letters in the list of incorrect letters and the hangman is represented with his third state
+
+![Hangman stage](assets/hangman_stages.png "Hangman's stage for each try")
 
 - At any point in the game, the user can choose between '1' check rules, '2' restart the game, and '3' exit the game. Choosing '1', the rules are displayed and immediately the game continues without any changes, choosing '2', the user is asked if he wants a new game, saying 'y' or 'Y', the new one is started, if he chooses 'n' or 'N', the game will resume. While choosing '3', the user will be asked if he's really sure to exit the game.
+
+![Rules](assets/rules.png "Rules of the game")
+
+![Restarting the game](assets/restart_game.png "Restarting the game")
+
+![exiting the game](assets/exit_game.png "Exiting the game")
+
 
 ### Future Features
 
