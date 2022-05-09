@@ -268,7 +268,9 @@ def exit_game(player):
 def start_game(new_player, game_is_done):
     """Initialize the game and several functions are called to verify variables.
 
-    Arg: name (str): Name chosen by the user.
+    Arg:
+    - new_player (str): Name chosen by the user
+    - game_is_done (boolean): is the game over
     """
     player = new_player
     word = guess_word()
@@ -356,33 +358,32 @@ def start_game(new_player, game_is_done):
         if status == word:
             is_correct = True
         # End of the used code
-            game_is_done = True
     if tries == 0:
         print(hangman[len(incorrect_letters)])
         print(f'\n {player}! The word was {word}\n')
-        game_is_done = True
     if is_correct is True:
         print(f'\n {player}! You\'re a GENIUS! {word} is the '
               f'hidden word\n')
-        game_is_done = True
 
 
 def main():
     """Initialize the game and restart after each round if t
-    he user wants to"""
+    he user wants to do it"""
     game_is_done = False
     new_player = intro()
     while game_is_done is False:
         start_game(new_player, game_is_done)
-        end_game = get_user_input(f'\n {new_player}, would you like to play '
-                                  f'again? "Y" or "N" ')
-        if end_game == 'N':
-            game_is_done = True
-            break
-        elif end_game == 'Y':
+        while True:
+            end_game = get_user_input(f'\n {new_player}, would you like to '
+                                      f'play again? "Y" or "N" ')
+            if end_game == 'N':
+                game_is_done = True
+                break
+            elif end_game == 'Y':
+                break
+            else:
+                print('\n Invalid input... "Y" or "N" ')
             game_is_done = False
-        else:
-            print('\n Invalid input... "Y" or "N" ')
     print('\n Thank for playing, see you next time...')
 
 
