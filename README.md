@@ -1,6 +1,6 @@
 # The Hangman
 
-![Am I respondive photo](assets/responsive.png)
+![Responsive Design](assets/responsive.png)
 
 [Link to Website](https://countries-hangman.herokuapp.com/)
 
@@ -133,6 +133,26 @@ Yellow is used to draw the user's attention to how many chances he has after eac
 ## Testing
 
 ### User Stories
+
+The game uses the command line interface, and it isn't very user friendly for a human end-user. Because of that, the user stories where tested to prioritize a better UI (User Interface).
+
+|   Reference   |   Description                                                                                                                                                                                                                                                                        |
+|---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   US01        |   As a user, I want to check a main menu with multiple choices for deciding if I want to play, check the rules or exit the game.                                                                                                                                                     |
+|   Validation  |   The only way to start the game is if the user enters number ‘2’, the rules are displayed entering number ‘1’ and if user enters number ‘3’, the game won’t start.                                                                                                                  |
+|   US02        |   As a user, I want to understand how many tries I have, what letters I’ve used on every opportunity before I guess the secret word or the hangman is completed                                                                                                                      |
+|   Validation  |   From the beginning of the game and for each try, the user can see the number of tries left, the number of letters of the secret word, the letters that he has already used  (incorrect letters, correct letters and used letters), the words he has tried and the hangman stage.   |
+|   US03        |   As a user, I want to check the rules without ending the current game.                                                                                                                                                                                                              |
+|   Validation  |   The user can check the rules at any point of the game, he only needs to enter number ‘1’, the rules will be displayed and then the game can continue.                                                                                                                              |
+|   US04        |   As a user, I want to restart or exit the game at any point and I don’t want to wait until the end of it.                                                                                                                                                                           |
+|   Validation  |   The user can enter number ‘2’ for restarting the game or number ‘3’ for exiting the game at any point. He will be asked if he is sure of his selection, if he is, the program will proceed. In case, he isn’t, he can always resume the game.                                      |
+|   US05        |   As a user, if I don’t guess the word, I would like to know the right answer.                                                                                                                                                                                                       |
+|   Validation  |   If the user doesn’t get the word, a message with the hidden word is shown.                                                                                                                                                                                                         |
+|   US05        |   As a user, I don’t want to decrease my number of tries if I make a typo (white space, symbol, or number)                                                                                                                                                                           |
+|   Validation  |   All user’s inputs are verified to decrease the penalizations for minor errors. The user is penalized if the letter is incorrect and if he tries to enter an incorrect word with the same length as the hidden word.                                                                |
+|   US06        |   As a user, I want to have the opportunity to start a new game after 8 tries ( = round).                                                                                                                                                                                            |
+|   Validation  |   After each round, no matter if the user guesses the hidden word or doesn’t , he will be asked if he would like to play a new game. If the answer is ‘y’, a new game will start.                                                                                                    |
+
 
 ### Functionality
 
