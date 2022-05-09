@@ -255,7 +255,8 @@ def exit_game(player):
     while True:
         question_exiting_game = get_user_input(f'\n {player}, are you sure'
                                                f' you want to exit the '
-                                               f'game? "Y" or "N": ')
+                                               f'game? "Y" or "N": 033[1;33m'
+                                               f' ---> \033[0;0m')
         if question_exiting_game == 'Y':
             print('\n You\'re exiting the game...\n')
             print(f' {player}, see you next time!\n')
