@@ -227,7 +227,10 @@ def restart_game(player, game_is_done):
     """show message to the user for a new game after the game is over.
     (No matter if he wins or loses).
 
-    Arg: player(str): name of the user for displaying personal messages.
+    Arg: player(str): name of the user for displaying personal messages
+
+    Returns: game_is_done (boolean): returns False if the user wants to
+    continue the game, and True if the user wants a new game
     """
     while game_is_done:
         play_again = get_user_input('\n Would you like to play a new'
@@ -266,7 +269,7 @@ def exit_game(player):
 
 
 def start_game(new_player, game_is_done):
-    """Initialize the game and several functions are called to verify variables.
+    """Run the game, and check user's inputs for every try
 
     Arg:
     - new_player (str): Name chosen by the user
@@ -386,7 +389,7 @@ def main():
                 print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N" ')
             game_is_done = False
     print('\n Thank for playing, see you next time...')
-    print(' __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\'
+    print('\n __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\'
           '__/\\__/\\__/\\__/\\__\n')
 
 
