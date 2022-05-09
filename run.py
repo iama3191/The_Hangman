@@ -208,8 +208,8 @@ def display_messages(
     """
     print(' ______________\n')
     print('\033[1;31m Choose "1" for checking the rules, "2" for '
-          'restarting, and "3" for exiting the game...\033[0;0m \n')
-    print(f'\t\t\t\t\033[1;33m** You have {tries} tries **\033[0;0m\n')
+          'restarting, and "3" for exiting the  game...\033[0;0m \n')
+    print(f'\t\t\t\033[1;33m** You have {tries} tries **\033[0;0m\n')
     print(f'\n {player}! your word has {str(len(word))} letters:'
           f'  {dupl_word_length}\n')
     print(f'\n\033[1;31m Incorrect letters: '
@@ -230,7 +230,7 @@ def restart_game(player, game_is_done):
     Arg: player(str): name of the user for displaying personal messages.
     """
     while game_is_done:
-        play_again = get_user_input(' Would you like to play a new'
+        play_again = get_user_input('\n Would you like to play a new'
                                     ' game, "Y" or "N"?\033[1;33m ---> '
                                     '\033[0;0m')
         if play_again == 'Y':
@@ -375,16 +375,19 @@ def main():
         start_game(new_player, game_is_done)
         while True:
             end_game = get_user_input(f'\n {new_player}, would you like to '
-                                      f'play again? "Y" or "N" ')
+                                      f'play again? "Y" or "N" \033[1;33m '
+                                      f'---> \033[0;0m ')
             if end_game == 'N':
                 game_is_done = True
                 break
             elif end_game == 'Y':
                 break
             else:
-                print('\n Invalid input... "Y" or "N" ')
+                print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N" ')
             game_is_done = False
     print('\n Thank for playing, see you next time...')
+    print(' __/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\__/\\'
+          '__/\\__/\\__/\\__/\\__\n')
 
 
 main()
