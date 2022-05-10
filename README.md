@@ -7,12 +7,14 @@
 [GitHub Repo](https://github.com/iama3191/hangman)
 
 ## About
+
 The Hangman is a guessing game for two or more players. One player chooses a word, a phrase or a sentence, and the rest of the players try to guess by indicating letters or if they are feeling confident, indicating the full word, phrase or sentence.  
-The word to guess is represented by a row of dashes representing each letter of the word. If the suggested letter is in the word, it is written down in all its correct positions. If it isn't in the word, the player, who chose the word, draws a stage of the hangman. This process is repeated until the hangman's diagram is completed. The number of tries  can change depending on how detailed is the diagram.
-This game is adapted for playing against the computer. All the words belong to the theme: 'Countries of the world', the player has 8 tries until the hangman is completed
+The word to guess is represented by a row of dashes representing each letter of the word. If the suggested letter is in the word, it is written down in all its correct positions. If it isn't in the word, the player, who chose the word, draws a stage of the hangman. This process is repeated until the hangman's diagram is completed. The number of tries can change depending on how detailed is the diagram.
+This game is adapted for playing against the computer. All the words belong to the category: 'Countries of the World', the player has 8 tries until the hangman is completed.
 
 
 ## Index - Table of Contents
+
 * [The Hangman](#the-hangman)
 * [About](#about)
 * [Index - Table of Contents](#index---table-of-contents)
@@ -85,7 +87,7 @@ This game is adapted for playing against the computer. All the words belong to t
 
 ### Structure
 
-The game has a series of logical steps for easy interaction with the program. The user is accompanied at all times with messages so that he understands what input he has to enter and so that he can make a decision at any time without waiting for the end of the game. At the same time, for every action the user performs, he will receive a response, either negative or positive.
+The game has a series of logical steps for easy navigation. The user is accompanied along the way with instructions so he can understand what input he has to enter and so that he can make a decision. At the same time, for every action the user performs, he will receive a response, either negative or positive.
 
 
 ### Skeleton
@@ -94,22 +96,27 @@ The game is built to follow a slightly more user-friendly visual pattern, there 
 
 ### Surface
 
-Three colors in addition to the default white were used to create an alert to the user as to the level of importance of what is happening in the game.
-Yellow is used to draw the user's attention to how many chances he has after each letter is entered, red was used to warn him that the entered data is invalid or incorrect (not part of the secret word). And green is used to tell the user that he is succeeding.
+Three colors in addition to the default white were used to create an alert to the user as importance level on what is happening in the game.
+
+- Yellow is used to draw the user's attention to how many chances he has after each letter is entered, and when he needs to make a decision.
+
+- Red was used to warn him that the entered an invalid answer or an incorrect answer (not part of the secret word). 
+
+- Green is used to tell the user that he is succeeding.
 
 ## Features
 
 ### Current Features
 
-- Main menu with three options: (1) Check the rules, (2) Start the game and (3) Exit the game
+- Main menu with three options: (1) Check the rules, (2) Start the game and (3) Exit the game.
 
 ![Main menu](assets/main_menu.png "Main menu: '1' Help, '2' Play, and '3' Exit")
 
-- List with letters entered by the user in alphabetical order: incorrect letters (do not belong to the secret word), correct letters (belong to the secret word), used letters (all valid options entered).
+- List with letters entered by the user in alphabetical order: incorrect letters (do not belong to the secret word), correct letters (belong to the secret word), used letters (all valid options entered), incorrect words (words with the same lenght as the hidden word).
 
 ![Message for the user](assets/user_messages.png "Relevant information for the user")
 
-- The state of the hangman is updated every time the user loses a chance, therefore it warns the user of the danger of losing. In the following image you can see 3 letters in the list of incorrect letters and the hangman is represented with his third state
+- The state of the hangman is updated every time the user loses, therefore it warns the user of the danger of losing. In the following image you can see 3 letters in the list of incorrect letters and the hangman is represented in his third state.
 
 ![Hangman stage](assets/hangman_stages.png "Hangman's stage for each try")
 
@@ -183,6 +190,7 @@ The game uses the command line interface, and it isn't very user friendly for a 
 |   Restarting the game                               |   User decides to restart the game at any moment, he needs to enter ‘2’ instead of a letter or a full word.                                                 |   The user will be asked if he wants to start a new game, if the user answers ‘Y’ or ‘y’, the game will start with a new word.                                                                                                                                                                                            |   PASS          |
 |   Messages display at the beginning of every round  |   User needs to enter valid inputs for guessing the hidden word ( valid inputs: an alphabetic character or a word with the same length as the hidden word)  |   When user decides to play, will have on the terminal an update for each round: general instructions, number of tries left, length of the hidden word, used letters that aren’t in the hidden word, letters that are in the hidden word, incorrect words with the same length as the hidden word, stage of the hangman.  |   PASS          |
 |   New game                                          |   After each round, no matter the result ( if user wins or loses), he needs to answer if he wants to play a new game with ‘Y’ or ’N'                        |   If the user answers ‘Y’, a new game is staring; if he declines, the game will end.                                                                                                                                                                                                                                      |   PASS          |
+
 ## Deployment
 
 ### How to clone the GitHub repository
