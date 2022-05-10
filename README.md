@@ -29,10 +29,11 @@ This game is adapted for playing against the computer. All the words belong to t
     * [Future Features](#future-features)
 * [Technologies Used](#technologies-used)
     * [Languages Used](#languages-used)
-    * [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
+    * [Tools](#tools)
 * [Testing](#testing)
     * [User Stories](#user-stories)
     * [Functionality](#functionality)
+    * [Validators](#validators)
 * [Deployment](#deployment)
     * [How to clone the GitHub repository](#how-to-clone-the-github-repository)
     * [How to fork the GitHub repository](#how-to-fork-the-github-repository)
@@ -143,13 +144,17 @@ Three colors in addition to the default white were used to create an alert to th
 
 * [Python 3.8.11](https://www.python.org/)
 
-### Frameworks, Libraries and Programs Used
+### Tools
 
 * [Git](https://git-scm.com): Was used for version control by using the Gitpod terminal to commit to Git and Push to GitHub.
 
 * [GitHub](https://github.com): Was used as the repository for the project's code after being pushed from Git.
 
 * [Heroku](https://www.heroku.com): Was used to deploy the application and provides an environment in which the code can execute.
+
+* [PEP8](http://pep8online.com/): Was used to check the code requirements.
+
+* [Table Generator](https://www.tablesgenerator.com/markdown_tables#): Was used to generates the tables on the testing section.
 
 ## Testing
 
@@ -190,6 +195,14 @@ The game uses the command line interface, and it isn't very user friendly for a 
 |   Restarting the game                               |   User decides to restart the game at any moment, he needs to enter ‘2’ instead of a letter or a full word.                                                 |   The user will be asked if he wants to start a new game, if the user answers ‘Y’ or ‘y’, the game will start with a new word.                                                                                                                                                                                            |   PASS          |
 |   Messages display at the beginning of every round  |   User needs to enter valid inputs for guessing the hidden word ( valid inputs: an alphabetic character or a word with the same length as the hidden word)  |   When user decides to play, will have on the terminal an update for each round: general instructions, number of tries left, length of the hidden word, used letters that aren’t in the hidden word, letters that are in the hidden word, incorrect words with the same length as the hidden word, stage of the hangman.  |   PASS          |
 |   New game                                          |   After each round, no matter the result ( if user wins or loses), he needs to answer if he wants to play a new game with ‘Y’ or ’N'                        |   If the user answers ‘Y’, a new game is staring; if he declines, the game will end.                                                                                                                                                                                                                                      |   PASS          |
+
+### Validators
+
+The [PEP8](http://pep8online.com/) validator was used to check if the code in the run.py has any problem.
+
+The test result is: "All right"
+
+![PEP8 Validation](assets/validation.png)
 
 ## Deployment
 
