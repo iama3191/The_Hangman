@@ -94,6 +94,7 @@ def intro():
                 return name
             elif answer == 3:
                 exit_game(name)
+                print('\n ______________\n')
                 print('\n You\'re returning to the main menu...')
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input. Please enter'
@@ -255,7 +256,7 @@ def exit_game(player):
     while True:
         question_exiting_game = get_user_input(f'\n {player}, are you sure'
                                                f' you want to exit the '
-                                               f'game? "Y" or "N": 033[1;33m'
+                                               f'game? "Y" or "N": \033[1;33m'
                                                f' ---> \033[0;0m')
         if question_exiting_game == 'Y':
             print('\n You\'re exiting the game...\n')
@@ -311,27 +312,28 @@ def start_game(new_player, game_is_done):
                 if len(match) != 0:
                     for element in match:
                         word_length[element] = player_guess
-                    print(f'\n GREAT! {player_guess} is in the secret word\n')
+                    print(f'\n\033[5;32m GREAT! {player_guess} is in the '
+                          f'secret word \033[0;0m\n')
                     correct_letters.append(player_guess)
                 else:
                     tries -= 1
                     incorrect_letters.append(player_guess)
-                    print(f'\n Sorry... {player_guess} is not in the'
-                          f' secret word \n')
+                    print(f'\n\033[5;33m Sorry... {player_guess} is not in the'
+                          f' secret word\033[0;0m \n')
             elif len(player_guess) == len(word):
                 if player_guess == word:
                     is_correct = True
-                    game_is_done = True
                 elif player_guess != word:
                     tries -= 1
                     incorrect_words.append(player_guess)
-                    print(f'\n Sorry...{player_guess} is not the secret'
-                          f' word \n')
+                    print(f'\n\033[5;33m Sorry...{player_guess} is not the '
+                          f'secret word\033[0;0m \n')
                 else:
                     print('\n\033[1;31m -->\033[0;0m Invalid input, enter'
                           ' a single letter or the complete word\n')
             else:
-                print('\n The word has a different length of the hidden word')
+                print('\n\033[1;31m -->\033[0;0m The word has a different '
+                      'length of the hidden word. Try again... ')
         else:
             if player_guess == '1':
                 print(f'\n {player}... Check the rules... \n')
@@ -364,27 +366,27 @@ def start_game(new_player, game_is_done):
         # End of the used code
     if tries == 0:
         print(hangman[len(incorrect_letters)])
-        print(f'\n {player}! The word was {word}\n')
+        print(f'\n\033[5;33m {player}! The word was {word}\n\033[0;0m')
     if is_correct is True:
-        print(f'\n {player}! You\'re a GENIUS! {word} is the '
-              f'hidden word\n')
+        print(f'\n\033[5;32m {player}! You\'re a GENIUS! {word} is the'
+              f' hidden word \033[0;0m\n')
 
 
 def main():
-    """Initialize the game and restart after each round if t
-    he user wants to do it"""
+    """Initialize the game and restart after each round if the
+    user wants to do it"""
     game_is_done = False
     new_player = intro()
     while game_is_done is False:
         start_game(new_player, game_is_done)
         while True:
-            end_game = get_user_input(f'\n {new_player}, would you like to '
-                                      f'play again? "Y" or "N" \033[1;33m '
-                                      f'---> \033[0;0m ')
-            if end_game == 'N':
+            want_new_game = get_user_input(f'\n {new_player}, would you like '
+                                           f'to play again? "Y" or "N" \033'
+                                           f'[1;33m ---> \033[0;0m ')
+            if want_new_game == 'N':
                 game_is_done = True
                 break
-            elif end_game == 'Y':
+            elif want_new_game == 'Y':
                 break
             else:
                 print('\n\033[1;31m -->\033[0;0m Invalid input... "Y" or "N" ')
