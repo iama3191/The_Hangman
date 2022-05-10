@@ -42,6 +42,7 @@ This game is adapted for playing against the computer. All the words belong to t
     * [People](#people)
     * [Python Library Dependecies and Packages](#python-library-dependecies-and-packages)
     * [Software & Web Applications](#software--web-applications)
+* [Aknowlodgements](#aknowlodgements)
 
 
 ## User Experience Research and Design
@@ -165,7 +166,7 @@ The game uses the command line interface, and it isn't very user friendly for a 
 |   Reference   |   Description                                                                                                                                                                                                                                                                        |
 |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |   US01        |   As a user, I want to check a main menu with multiple choices for deciding if I want to play, check the rules or exit the game.                                                                                                                                                     |
-|   Validation  |   The only way to start the game is if the user enters number ‘2’, the rules are displayed entering number ‘1’ and if user enters number ‘3’, the game won’t start.                                                                                                                  |
+|   Validation  |   The only way to start the game is if the user enters number ‘2’, the rules are displayed entering number ‘1’ and if user enters number ‘3’, the game will try to exit.                                                                                                                  |
 |   US02        |   As a user, I want to understand how many tries I have, what letters I’ve used on every opportunity before I guess the secret word or the hangman is completed                                                                                                                      |
 |   Validation  |   From the beginning of the game and for each try, the user can see the number of tries left, the number of letters of the secret word, the letters that he has already used  (incorrect letters, correct letters and used letters), the words he has tried and the hangman stage.   |
 |   US03        |   As a user, I want to check the rules without ending the current game.                                                                                                                                                                                                              |
@@ -257,18 +258,13 @@ After linking your app to your workspace with one of the above steps, you can th
 
 ## Credit
 
-* Table Generator with markdown style guide:
-
-    https://www.tablesgenerator.com/markdown_tables#
-
-### People
-
 * Mentor support, guidance, and tips to improve my coding skills throughout the project:
 
     - Brian Macharia
 
+* Checking functionality of the game:
 
-### Others
+    - Petar Hrgetić Vitols
 
 * Add color to the terminal:
 
@@ -283,3 +279,28 @@ After linking your app to your workspace with one of the above steps, you can th
     - https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
 
     - https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
+
+* If the user completes the hidden word, how to check if he is right:
+
+    - https://mardiyyah.medium.com/a-simple-hangman- 
+
+
+    ``` python
+    status = ''
+        if is_correct is False:
+            for letter in word:
+                if letter in correct_letters:
+                    status += letter
+                else:
+                    status += '_'
+        if status == word:
+            is_correct = True
+    ```
+
+* How to make the hangman stages:
+    
+    - https://coder-question.com/cq-blog/602673
+
+## Aknowlodgements
+
+This game was built as my third project for [Code Institute](https://codeinstitute.net/global/).
