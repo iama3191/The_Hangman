@@ -91,6 +91,9 @@ This game is adapted for playing against the computer. All the words belong to t
 
 The game has a series of logical steps for easy navigation. The user is accompanied along the way with instructions so he can understand what input he has to enter and so that he can make a decision. At the same time, for every action the user performs, he will receive a response, either negative or positive.
 
+The logic of the game is represented below with a general flowchart, and in this [file](pseudocode.txt) is the pseudocode of the game. Some changes were implemented during the programming and testing process.
+
+![Flowchart of the game](assets/general_flow_chart.png)
 
 ### Skeleton
 
@@ -156,6 +159,8 @@ Three colors in addition to the default white were used to create an alert to th
 * [PEP8](http://pep8online.com/): Was used to check the code requirements.
 
 * [Table Generator](https://www.tablesgenerator.com/markdown_tables#): Was used to generates the tables on the testing section.
+
+* [LucidChart](https://www.lucidchart.com/pages/): Was used to create the flowchart of the game.
 
 ## Testing
 
