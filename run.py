@@ -313,7 +313,7 @@ def start_game(new_player, game_is_done):
                     for element in match:
                         word_length[element] = player_guess
                     print(f'\n\033[5;32m GREAT! {player_guess} is in the '
-                          f'secret word \033[0;0m\n')
+                          f'secret word \033[0;0m')
                     correct_letters.append(player_guess)
                 else:
                     tries -= 1
