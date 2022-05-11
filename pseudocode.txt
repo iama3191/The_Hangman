@@ -8,37 +8,21 @@ Game:
 (X) Generate a random word
 (X) Ask to the user for an input (all inputs where be transformed into uppercase)
 (X) Check if it is an alphabetic character, a number, or if it's a single character.
-    a. If it is a number, display a message of invalid input and ask for a new one. (X)
-    b. If the input is greater than 1 character, check if it is the secret word. (X)
-    c. If it is an alphabetic character, continue to the next comparison. (X)
+    a. If it is a number, display a message of invalid input and ask for a new one.
+    b. If the input's lenght is the same as the secret word, check if it is the secret word.
+    c. If it is an alphabetic character, continue to the next comparison.
 (X) Check if the letter was already used, what will happen?
     a. Ask for a new input
 (X) Is the letter in the word to guess?
     a. 'y' --> show the place in the word, and if it is in one or more places, show them
-    b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages (X)
+    b. 'n' --> add the letter to a list of invalid letters and update the hangmans's stages
 (X) Count the # of tries and repeat. 
-(X) if # of tries is 0 and the user hasn't guessed. Display message of good luck for the next time (X)
-( ) Ask to the user if he wants to play a new game
+(X) If # of tries is 0 and the user didn't guess. Display message of good luck for the next time
+(X) If the user guesses, congratulate him.
+(X) Ask to the user if he wants to play a new game
 
 #Features to implement
 (Y) Show colors, simple color scheme (green for winning, red for losing and yellow as a warning)
 (N) Add more ASCII art for the game (Title: Hangman, welcome, final message )
 (N) No matter if the user gets the word, at the end, a message will be displayed with some info of the country
 (Y) A personal approach to the user: Ask for his name, and every message must be personal to him
-
-#Pages to Check
-Color to the terminal: https://stackabuse.com/how-to-print-colored-text-in-python/
-
-#W3schools
-
-https://www.w3schools.com/python/ref_string_isalpha.asp
-
-https://www.educative.io/edpresso/how-to-compare-two-strings-in-python
-
-
-https://stackoverflow.com/questions/49463141/how-to-print-a-list-like-a-string
-
-https://www.delftstack.com/howto/python/python-find-all-indexes-of-a-character-in-string/#:~:text=We%20can%20use%20the%20finditer,indexes%20where%20the%20pattern%20occurs.
-
-
-
